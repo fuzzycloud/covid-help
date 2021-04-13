@@ -47,38 +47,21 @@ class DrawerComponent extends React.Component {
             </ListItem>
           ))} */}
           <ListItem button  >
-          <ListItemIcon><HomeIcon /></ListItemIcon> <ListItemText>Home</ListItemText>
+          <ListItemIcon><HomeIcon /></ListItemIcon> <ListItemText>
+            <a href="Home/home">Home</a>
+            </ListItemText>
+          
         </ListItem>
         <ListItem button  >
-          <ListItemIcon><ContactsIcon /></ListItemIcon> <ListItemText>Contact Us</ListItemText>
+          <ListItemIcon><ContactsIcon /></ListItemIcon> <ListItemText>
+           <a href="Contact/contact">Contact Us</a> 
+            </ListItemText>
         </ListItem>
         </List>
-        {/* <MenuList>
-            {routes.map((prop, key) => {
-              return (
-                <Link to={prop.path} style={{ textDecoration: 'none' }} key={key}>
-                  <MenuItem selected={this.activeRoute(prop.path)}>
-                    <ListItemIcon>
-                      <prop.icon />
-                    </ListItemIcon>
-                    <ListItemText primary={prop.sidebarName} />
-                  </MenuItem>
-                </Link>
-              );
-            })}
-          </MenuList> */}
+       
         <Divider />
         <Footer/>
-        {/* <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
+        
       </div>
     );
 
