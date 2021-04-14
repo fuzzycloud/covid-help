@@ -5,11 +5,17 @@ export type Address = {
     state: string;
     country: string;
 }
+
+export type Contact = {
+    name: string,
+    mobileNo: string
+}
+
 export type Tiffin = {
     name: string,
     details?: string,
     address: Address,
-    contactNos: string[]
+    contacts: Contact[]
 }
 
 export const tiffin_service_data: Tiffin[] = [
@@ -19,7 +25,10 @@ export const tiffin_service_data: Tiffin[] = [
             city: 'Ahmedabad',
             state: 'Gujarat',
             country: 'India'
-        }, contactNos: ['1234567890']
+        }, contacts: [{
+            name: 'Some Name',
+            mobileNo: '1234567890'
+        }]
     },
     {
         name: 'Some 2',
@@ -27,7 +36,10 @@ export const tiffin_service_data: Tiffin[] = [
             city: 'Ahmedabad',
             state: 'Gujarat',
             country: 'India'
-        }, contactNos: ['1234567892']
+        }, contacts: [{
+            name: 'Some Name',
+            mobileNo: '1234567890'
+        }]
     },
     {
         name: 'Some 3',
@@ -35,6 +47,9 @@ export const tiffin_service_data: Tiffin[] = [
             city: 'Mumbai',
             state: 'Maharashtra',
             country: 'India'
-        }, contactNos: ['1234567893']
+        }, contacts: [{
+            name: 'Some Name',
+            mobileNo: '1234567890'
+        }]
     }
 ];
