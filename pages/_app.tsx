@@ -116,6 +116,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <React.Fragment>
             <Head title='Covid Help' />
             <ThemeProvider theme={theme}>
+                <CssBaseline />
                 <div className={classes.root}>
                     <CssBaseline />
                     <AppBar

@@ -8,13 +8,23 @@ export const TiffinServiceList = ({ tiffins }: InferGetStaticPropsType<typeof ge
         return (
             <div>
                 <List>
-                    {tiffins.map((x, i) => (<ListItem key={`${x}-${i}`} >
-                        <ListItemText primary={x.name} secondary={
-                            <React.Fragment>
-                                <p>{x.details}</p>
-                            </React.Fragment>
-                        } />
-                    </ListItem>))}
+                    {tiffins.map((x, i) => (
+                        <li>
+                            <ListItem key={`${x}-${i}`} >
+                                <ListItemText primary={x.name} secondary={
+                                    <React.Fragment>
+                                        <Typography variant="body1" gutterBottom>
+                                            {x.details}
+                                        </Typography>
+                                        {x.contacts.map(y => (<Typography variant="body2" gutterBottom>
+                                            {y.name} : <a href={`tel:${y.mobileNo}`}>{y.mobileNo}</a>
+                                        </Typography>))}
+                                    </React.Fragment>
+                                } />
+                            </ListItem>
+                            <Divider />
+                        </li>
+                    ))}
                 </List>
             </div>
         )

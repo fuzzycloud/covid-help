@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = ({ addresses }: InferGetStaticPropsType<typeof getStaticProps>) => {
-    const classes = useStyles();
     const states = _.chain(addresses).map(x => x.state).uniq().value();
     const [state, setState] = useState<string>('');
     const [cities, setCities] = useState<string[]>([])
@@ -32,7 +31,7 @@ const Home = ({ addresses }: InferGetStaticPropsType<typeof getStaticProps>) => 
                         setCities(_.chain(addresses).filter(x => x.state.toLowerCase() === newValue.toLowerCase()).map(x => x.city).uniq().value());
                     }
                 }}
-                renderInput={params => <TextField {...params} label='State' variant='outlined' />} />
+                renderInput={params => <TextField {...params} label='Select State' variant='outlined' />} />
 
             <Divider />
 
