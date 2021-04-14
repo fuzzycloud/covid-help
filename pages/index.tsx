@@ -5,6 +5,7 @@ import { Address, tiffin_service_data } from '../data/tiffin_service';
 import { InferGetStaticPropsType } from 'next';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import * as _ from 'lodash';
+import { useRouter } from 'next/dist/client/router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,7 @@ const Home = ({ addresses }: InferGetStaticPropsType<typeof getStaticProps>) => 
   const states = _.chain(addresses).map(x => x.state).uniq().value();
   const [state, setState] = useState<string>('');
   const [cities, setCities] = useState<string[]>([])
+  const router = useRouter();
   return (
     <div>
       <Autocomplete id='state-selection'
@@ -36,7 +38,9 @@ const Home = ({ addresses }: InferGetStaticPropsType<typeof getStaticProps>) => 
 
       <List component="nav" aria-label="secondary mailbox folders">
         {cities.map((x, i) => (
-          < ListItem key={`${x}_${i}`} button onClick={() => console.log(`${x}-${state}`)}>
+          < ListItem key={`${x}_${i}`} button onClick={() => {
+            router.push(`/${state}/${x}`)
+          }}>
             <ListItemText primary={x} />
           </ListItem>
         ))}
