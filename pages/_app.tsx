@@ -14,7 +14,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Head from '../components/head';
 import MenuIcon from '@material-ui/icons/Menu';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText, ThemeProvider } from '@material-ui/core';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
 
@@ -92,7 +93,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [currentPage, setCurrentPage] = useState<string>('');
+    const router = useRouter();
+    const [currentPage, setCurrentPage] = useState<string>('Tiffins');
+
+    React.useEffect(() => {
+        // Remove the server-side injected CSS.
+        const jssStyles = document.querySelector('#jss-server-side');
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -103,75 +113,81 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     };
 
     return (
-        <>
+        <React.Fragment>
             <Head title='Covid Help' />
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar
-                    position="fixed"
-                    className={clsx(classes.appBar, {
-                        [classes.appBarShift]: open,
-                    })}
-                >
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={handleDrawerOpen}
-                            edge="start"
-                            className={clsx(classes.menuButton, open && classes.hide)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" noWrap>
-                            Covid Help
-              </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    className={classes.drawer}
-                    variant="persistent"
-                    anchor="left"
-                    open={open}
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                >
-                    <div className={classes.drawerHeader}>
-                        <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                        </IconButton>
-                    </div>
-                    <Divider />
-                    <List>
-                        {serviceRoutes.map((item, index) => (
-                            <ListItem button key={`${item.title}_${index}`}>
-                                <ListItemText primary={item.title} />
+            <ThemeProvider theme={theme}>
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <AppBar
+                        position="fixed"
+                        className={clsx(classes.appBar, {
+                            [classes.appBarShift]: open,
+                        })}
+                    >
+                        <Toolbar>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={handleDrawerOpen}
+                                edge="start"
+                                className={clsx(classes.menuButton, open && classes.hide)}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="h6" noWrap>
+                                Covid Help - {currentPage}
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer
+                        className={classes.drawer}
+                        variant="persistent"
+                        anchor="left"
+                        open={open}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        <div className={classes.drawerHeader}>
+                            <IconButton onClick={handleDrawerClose}>
+                                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            </IconButton>
+                        </div>
+                        <Divider />
+                        <List>
+                            {serviceRoutes.map((item, index) => (
+                                <ListItem button key={`${item.title}_${index}`} onClick={() => {
+                                    router.push(item.route);
+                                    setCurrentPage(item.title);
+                                }}>
+                                    <ListItemText primary={item.title} />
+                                </ListItem>
+                            ))}
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem button key={'contact-us'} onClick={() => {
+                                router.push('/contact');
+                                setCurrentPage('Contact Us')
+                            }}>
+                                <ListItemText primary={'Contact Us'} />
                             </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['Contact Us'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Drawer>
-                <main
-                    className={clsx(classes.content, {
-                        [classes.contentShift]: open,
-                    })}
-                >
-                    <div className={classes.drawerHeader} />
-                    <div>
-                        <Component {...pageProps} />
-                    </div>
+                        </List>
+                    </Drawer>
+                    <main
+                        className={clsx(classes.content, {
+                            [classes.contentShift]: open,
+                        })}
+                    >
+                        <div className={classes.drawerHeader} />
+                        <div>
+                            <Component {...pageProps} />
+                        </div>
 
-                </main>
-            </div>
-        </>
+                    </main>
+                </div>
+            </ThemeProvider>
+        </React.Fragment>
     );
 
 
