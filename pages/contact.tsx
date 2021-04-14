@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 const Contact = () => {
   return <div>
-    Contact will come here
+    Coming Soon
   </div>
 }
 
