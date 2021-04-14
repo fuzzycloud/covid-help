@@ -1,45 +1,65 @@
-import React from "react";
-import ToolbarComponent from "../components/Toolbar/Toolbar";
-import DrawerComponent from "../components/Drawer/Drawer";
-import { Router, Route, Link } from "react-router-dom";
-import Home from "../pages/Home/home";
-class App extends React.Component {
-  state = {
-    left: false
-  };
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { ListItem, List, Divider, TextField, ListItemText } from '@material-ui/core';
+import { Address, tiffin_service_data } from '../data/tiffin_service';
+import { InferGetStaticPropsType } from 'next';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import * as _ from 'lodash';
 
-  toggleDrawer = () => {
-    // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-    //   return;
-    // }
 
-    this.setState({ left: false });
-  };
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 200
+  }
+}));
 
-  openDrawer = () => {
-    this.setState({
-      left: true
-    });
-  };
+const Home = ({ addresses }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const classes = useStyles();
+  const states = _.chain(addresses).map(x => x.state).uniq().value();
+  const [state, setState] = useState<string>('');
+  const [cities, setCities] = useState<string[]>([])
+  return (
+    <div>
+      <Autocomplete id='state-selection'
+        options={states}
+        style={{ width: 300 }}
+        onChange={(event: any, newValue: string | null) => {
+          if (newValue) {
+            setState(newValue);
+            setCities(_.chain(addresses).filter(x => x.state.toLowerCase() === newValue.toLowerCase()).map(x => x.city).uniq().value());
+          }
+        }}
+        renderInput={params => <TextField {...params} label='State' variant='outlined' />} />
 
-  render() {
-    return (
-      <div className="App">
-        {/* <Router> */}
-        <ToolbarComponent openDrawerHandler={this.openDrawer} />
-        <DrawerComponent
-          left={this.state.left}
-          toggleDrawerHandler={this.toggleDrawer}
-        />
-        
-          {/* <main >
-        <Route exact path="/" component={Home} />
-         <Route path="/grid" component={Grid} />
-    </main>
-    </Router> */}
-      </div>
-    );
+      <Divider />
+
+      <List component="nav" aria-label="secondary mailbox folders">
+        {cities.map((x, i) => (
+          < ListItem key={`${x}_${i}`} button onClick={() => console.log(`${x}-${state}`)}>
+            <ListItemText primary={x} />
+          </ListItem>
+        ))}
+      </List>
+    </div >
+  );
+}
+
+
+type SlimAddress = Pick<Address, 'city' | 'state' | 'country'>
+
+export const getStaticProps = async () => {
+  const addresses: SlimAddress[] = tiffin_service_data.map(x => ({
+    city: x.address.city,
+    state: x.address.state,
+    country: x.address.country
+  }))
+
+  return {
+    props: {
+      addresses
+    }
   }
 }
-export default App;
 
+export default Home;
