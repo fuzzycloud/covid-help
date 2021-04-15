@@ -1,24 +1,6 @@
-export type Address = {
-  address_line?: string;
-  address_line2?: string;
-  city: string;
-  state: string;
-  country: string;
-};
+import { Info } from '../types/info';
 
-export type Contact = {
-  name: string;
-  mobileNo: string;
-};
-
-export type Tiffin = {
-  name: string;
-  details?: string;
-  address: Address;
-  contacts: Contact[];
-};
-
-export const tiffin_service_data: Tiffin[] = [
+export const tiffin_service_data: Info[] = [
   {
     name: 'BJP Bhavnagar - Rajeev Pandya',
     details:
