@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Link from 'next/link';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,9 +24,12 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Paper className={classes.root} elevation={1}>
-        <Typography component="p">Created by Fuzzy Cloud</Typography>
-        <Typography component="p">
-          © {new Date().getFullYear()} All right reserved
+        <Typography variant="caption" display="block">
+          Maintained by <a href={'https://fuzzycloud.in'}>Fuzzy Cloud.</a> ©{' '}
+          {new Date().getFullYear()} All right reserved. Data is aggregated for
+          community service, but not verified. You might find discrepancy in
+          services. Please <Link href={'/contact'}> contact us </Link> if there
+          is any need for update.
         </Typography>
       </Paper>
     </footer>
