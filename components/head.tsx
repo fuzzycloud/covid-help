@@ -1,16 +1,16 @@
-import React from 'react'
-import NextHead from 'next/head'
+import React from 'react';
+import NextHead from 'next/head';
 
-const defaultDescription = ''
-const defaultOGURL = ''
-const defaultOGImage = ''
+const defaultDescription = '';
+const defaultOGURL = '';
+const defaultOGImage = '';
 
 type HeadProps = {
-  title: string,
-  description?: string,
-  url?: string,
-  ogImage?: string
-}
+  title: string;
+  description?: string;
+  url?: string;
+  ogImage?: string;
+};
 
 const Head = (props: HeadProps) => (
   <NextHead>
@@ -38,6 +38,6 @@ const Head = (props: HeadProps) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
   </NextHead>
-)
+);
 
-export default Head
+export default Head;
