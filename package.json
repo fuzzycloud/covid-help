@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.3",
+    "prettier": "^2.2.1",
     "typescript": "^4.2.4"
   }
 }
