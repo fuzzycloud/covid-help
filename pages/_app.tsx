@@ -26,18 +26,9 @@ import {
   ThemeProvider,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import { serviceRoutes } from '../data/routes';
 
 const drawerWidth = 240;
-
-const serviceRoutes: Array<{
-  title: string;
-  route: string;
-}> = [
-  {
-    title: 'Tiffins',
-    route: '/tiffins',
-  },
-];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -184,6 +175,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             </List>
             <Divider />
             <List>
+              <ListItem
+                button
+                key={'add-or-update'}
+                onClick={() => {
+                  router.push('/addOrUpdate');
+                  setCurrentPage('Add Or Update');
+                }}
+              >
+                <ListItemText primary={'Add Or Update'} />
+              </ListItem>
               <ListItem
                 button
                 key={'contact-us'}
