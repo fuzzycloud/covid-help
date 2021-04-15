@@ -19,6 +19,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Head from '../components/head';
 import MenuIcon from '@material-ui/icons/Menu';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import {
   ListItem,
   ListItemIcon,
@@ -138,6 +139,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <Typography variant="h6" noWrap>
                 Covid Help - {currentPage}
               </Typography>
+
+              <IconButton
+                href="https://github.com/fuzzycloud/covid-help"
+                target="_blank"
+              >
+                <GitHubIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
           <Drawer
