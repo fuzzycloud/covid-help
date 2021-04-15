@@ -15,7 +15,7 @@ export const serviceRoutes: Array<{
     route: '/ambulance',
   },
   {
-    title: 'DRS',
+    title: 'Doctors on call',
     route: '/drs',
   },
   {
