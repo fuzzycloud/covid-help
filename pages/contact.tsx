@@ -28,7 +28,7 @@ const Contact = () => {
       className={classes.root}
       method="POST"
       autoComplete={'off'}
-      netlify
+      data-netlify="true"
       netlify-honeypot="bot-field"
     >
       <TextField
