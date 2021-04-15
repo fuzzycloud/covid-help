@@ -68,7 +68,7 @@ export const tiffin_service_data: Info[] = [
     details:
       'Free tiffin service from 9th April.  Please register name and address before 9 AM in morning and 5 PM in evening',
     address: {
-      city: 'Sihor',
+      city: 'Bhavnagar',
       state: 'Gujarat',
       country: 'India',
     },

@@ -88,6 +88,11 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginLeft: 0,
     },
+    rightToolbar: {
+      marginLeft: "auto",
+      marginRight: -12,
+      color: 'white'
+    },
   })
 );
 
@@ -144,6 +149,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <IconButton
                 href="https://github.com/fuzzycloud/covid-help"
                 target="_blank"
+                className={classes.rightToolbar}
               >
                 <GitHubIcon />
               </IconButton>
