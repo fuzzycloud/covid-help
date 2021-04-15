@@ -25,6 +25,7 @@ const Contact = () => {
   return (
     <form
       name="contact"
+      action={'/contact'}
       className={classes.root}
       method="POST"
       autoComplete={'off'}
