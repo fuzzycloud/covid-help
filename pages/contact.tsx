@@ -1,7 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { makeStyles, Theme, createStyles } from '@material-ui/core';
 
@@ -25,15 +24,16 @@ const Contact = () => {
   return (
     <form
       name="contact"
-      action={'/contact'}
+      action={'/'}
       className={classes.root}
       method="POST"
       autoComplete={'off'}
-      data-netlify="true"
+      netlify
       netlify-honeypot="bot-field"
     >
       <TextField
         id="name"
+        name="name"
         label="Name"
         style={{ margin: 8 }}
         placeholder="Name"
@@ -47,6 +47,7 @@ const Contact = () => {
       />
       <TextField
         id="email"
+        name="email"
         label="Email"
         style={{ margin: 8 }}
         placeholder="Email"
@@ -60,6 +61,7 @@ const Contact = () => {
       />
       <TextField
         id="message"
+        name="message"
         label="Message"
         style={{ margin: 8 }}
         placeholder="Message"
