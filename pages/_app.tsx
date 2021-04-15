@@ -28,6 +28,7 @@ import {
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { serviceRoutes } from '../data/routes';
+import Footer from '../components/footer';
 
 const drawerWidth = 240;
 
@@ -217,6 +218,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           </main>
         </div>
       </ThemeProvider>
+      <Footer />
     </React.Fragment>
   );
 };
