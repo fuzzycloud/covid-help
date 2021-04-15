@@ -65,6 +65,8 @@ const Contact = () => {
         helperText="Please provide detail message"
         fullWidth
         required
+        multiline
+        rows={4}
         margin="normal"
         InputLabelProps={{
           shrink: true,
