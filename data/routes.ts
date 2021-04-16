@@ -30,4 +30,12 @@ export const serviceRoutes: Array<{
     title: 'Plasma',
     route: '/plasma',
   },
+  {
+    title: 'Beds',
+    route: '/beds',
+  },
+  {
+    title: 'Home Isolation',
+    route: '/home-isolation',
+  },
 ];
