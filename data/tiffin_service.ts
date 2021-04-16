@@ -41,23 +41,23 @@ export const tiffin_service_data: Info[] = [
         mobileNo: '0278-2427384',
       },
       {
-        name: 'jayukaka tanawala',
+        name: 'Jayukaka tanawala',
         mobileNo: '+91-9825205366',
       },
       {
-        name: 'sanjaybhai thar',
+        name: 'Sanjaybhai thar',
         mobileNo: '+91-9427 558 072',
       },
       {
-        name: 'pareshbhai shah',
+        name: 'Pareshbhai shah',
         mobileNo: '+91-9377 525 151',
       },
       {
-        name: 'rushabhbhai shah',
+        name: 'Rushabhbhai shah',
         mobileNo: '+91-98251 73742',
       },
       {
-        name: 'kepibhai',
+        name: 'Kepibhai',
         mobileNo: '+91-9825474962',
       },
     ],
@@ -271,6 +271,94 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Shila Doshi ',
         mobileNo: ' +91-9662954111 , +91-9825795101 , +91-9825795101',
+        
+      },
+    ],
+  },
+  {
+    name: 'Free tiffin service',
+    details:
+    'Free tiffin service .  Please register name and address up to 10pm so we can provide tiffin next day',
+    address: {
+      city: 'Ahmadabad',
+      state: 'Gujarat',
+      country: 'India',
+    },
+    contacts: [
+      {
+        name: 'Call here for register',
+        mobileNo: '+91-8490891966',
+      },
+      {
+        name: 'other info',
+        mobileNo: '+91-9327031186',
+      },
+      {
+        name: 'other info',
+        mobileNo: '+91-9824058053',
+      },
+      {
+        name: 'other info',
+        mobileNo: '+91-9375954687',
+      },
+      {
+        name: 'other info',
+        mobileNo: '+91-9979882005',
+      },
+    ],
+  },
+  {
+    name: ' Apoorvaa',
+    details:
+    'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
+    address: {
+      city: 'Ahmadabad',
+      state: 'Gujarat',
+      country: 'India',
+    },
+    contacts: [
+      {
+        name: ' Shri Apurva Bhagat ',
+        mobileNo: ' +91-9825318192',
+        
+      },
+    ],
+  },
+  {
+    name: ' Shikshapatri Foundation',
+    details:
+    'We are available for food delivery.Please register your address and contact number on below number before one day. ',
+    address: {
+      city: 'Gandhinagar',
+      state: 'Gujarat',
+      country: 'India',
+    },
+    contacts: [
+      {
+        name: ' Admin ',
+        mobileNo: ' +91-9499499490',
+        
+      },
+    ],
+  },
+  {
+    name: 'Radhe Radhe Parivar',
+    details:
+    'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
+    address: {
+      city: 'Gandhinagar',
+      state: 'Gujarat',
+      country: 'India',
+    },
+    contacts: [
+      {
+        name: ' admin ',
+        mobileNo: ' +91-8141743241',
+        
+      },
+      {
+        name: ' admin ',
+        mobileNo: ' +91-9157637877',
         
       },
     ],
