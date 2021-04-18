@@ -89,9 +89,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: 0,
     },
     rightToolbar: {
-      marginLeft: "auto",
+      marginLeft: 'auto',
       marginRight: -12,
-      color: 'white'
+      color: 'white',
     },
   })
 );
@@ -101,7 +101,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState<string>('Tiffins');
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -143,7 +142,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" noWrap>
-                Covid Help - {currentPage}
+                Covid Help
               </Typography>
 
               <IconButton
@@ -181,7 +180,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                   key={`${item.title}_${index}`}
                   onClick={() => {
                     router.push(item.route);
-                    setCurrentPage(item.title);
                   }}
                 >
                   <ListItemText primary={item.title} />
@@ -195,7 +193,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 key={'add-or-update'}
                 onClick={() => {
                   router.push('/addOrUpdate');
-                  setCurrentPage('Add Or Update');
                 }}
               >
                 <ListItemText primary={'Add Or Update'} />
@@ -205,7 +202,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 key={'contact-us'}
                 onClick={() => {
                   router.push('/contact');
-                  setCurrentPage('Contact Us');
                 }}
               >
                 <ListItemText primary={'Contact Us'} />
