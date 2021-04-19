@@ -1,6 +1,10 @@
 import { Info } from '../types/info';
+import { tiffin_gujarat_bhavnagar_data } from './tiffins/gujarat/bhavnagar';
+import { tiffin_gujarat_surat_data } from './tiffins/gujarat/surat';
 
 export const tiffin_service_data: Info[] = [
+  ...tiffin_gujarat_bhavnagar_data,
+  ...tiffin_gujarat_surat_data,
   {
     name: 'BJP Bhavnagar - Rajeev Pandya',
     details:
@@ -170,7 +174,7 @@ export const tiffin_service_data: Info[] = [
   {
     name: 'patidar sweets and catress',
     details:
-    'Free tiffin service from 10th April.  Please register name and address before 9 AM in morning and 5 PM in evening',
+      'Free tiffin service from 10th April.  Please register name and address before 9 AM in morning and 5 PM in evening',
     address: {
       city: 'Surat',
       state: 'Gujarat',
@@ -213,8 +217,7 @@ export const tiffin_service_data: Info[] = [
   },
   {
     name: 'JBO foods',
-    details:
-    'Lunch Delivery ( time for Delivery 1:15pm to 2:30pm)',
+    details: 'Lunch Delivery ( time for Delivery 1:15pm to 2:30pm)',
     address: {
       city: 'Rajkot',
       state: 'Gujarat',
@@ -224,7 +227,6 @@ export const tiffin_service_data: Info[] = [
       {
         name: 'Rupal Doshi',
         mobileNo: '+91-92657 79818 ,+91-919265779818',
-        
       },
       {
         name: 'Kashmiraben Mehta',
@@ -238,13 +240,12 @@ export const tiffin_service_data: Info[] = [
         name: '𝗦𝗿𝘂𝘀𝗵𝘁𝗶 𝗦𝗵𝗮𝗵',
         mobileNo: '+91-72848 06063,+91-917284806063',
       },
-      
     ],
   },
   {
     name: 'Ketan Mehta - Jain Foods',
     details:
-    'We provide Jain food parcels only. Order before min 5 - 6 hours of lunch / dinner.Delivery will be for Lunch (1:30pm - 2:30pm) and Dinner ( 7:00pm - 7:30pm)',
+      'We provide Jain food parcels only. Order before min 5 - 6 hours of lunch / dinner.Delivery will be for Lunch (1:30pm - 2:30pm) and Dinner ( 7:00pm - 7:30pm)',
     address: {
       city: 'Rajkot',
       state: 'Gujarat',
@@ -254,14 +255,12 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Ketan Mehta ',
         mobileNo: ' +91-9408523399 ,  +91-9408046365 , +91-9408523399',
-        
       },
     ],
   },
   {
     name: ' Shila Doshi - Shri Mahavir Tiffin services',
-    details:
-    'We are available for food delivery',
+    details: 'We are available for food delivery',
     address: {
       city: 'Rajkot',
       state: 'Gujarat',
@@ -271,14 +270,13 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Shila Doshi ',
         mobileNo: ' +91-9662954111 , +91-9825795101 , +91-9825795101',
-        
       },
     ],
   },
   {
     name: 'Free tiffin service',
     details:
-    'Free tiffin service .  Please register name and address up to 10pm so we can provide tiffin next day',
+      'Free tiffin service .  Please register name and address up to 10pm so we can provide tiffin next day',
     address: {
       city: 'Ahmadabad',
       state: 'Gujarat',
@@ -310,7 +308,7 @@ export const tiffin_service_data: Info[] = [
   {
     name: ' Apoorvaa',
     details:
-    'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
+      'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
     address: {
       city: 'Ahmadabad',
       state: 'Gujarat',
@@ -320,14 +318,13 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Shri Apurva Bhagat ',
         mobileNo: ' +91-9825318192',
-        
       },
     ],
   },
   {
     name: ' Shikshapatri Foundation',
     details:
-    'We are available for food delivery.Please register your address and contact number on below number before one day. ',
+      'We are available for food delivery.Please register your address and contact number on below number before one day. ',
     address: {
       city: 'Gandhinagar',
       state: 'Gujarat',
@@ -337,14 +334,13 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Admin ',
         mobileNo: ' +91-9499499490',
-        
       },
     ],
   },
   {
     name: 'Radhe Radhe Parivar',
     details:
-    'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
+      'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
     address: {
       city: 'Gandhinagar',
       state: 'Gujarat',
@@ -354,19 +350,17 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' admin ',
         mobileNo: ' +91-8141743241',
-        
       },
       {
         name: ' admin ',
         mobileNo: ' +91-9157637877',
-        
       },
     ],
   },
   {
     name: ' Satkarma Jivdaya ',
     details:
-    'Tiffin service will be provided free of cost at night for meals to the patients admitted to Bhavnagar Civil Hospital. Phone for Tiffin from 5 to 7 p.m. ',
+      'Tiffin service will be provided free of cost at night for meals to the patients admitted to Bhavnagar Civil Hospital. Phone for Tiffin from 5 to 7 p.m. ',
     address: {
       city: 'Bhavnagar',
       state: 'Gujarat',
@@ -376,14 +370,13 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' Hareshbhai B. Mer ',
         mobileNo: ' +91-9825466868',
-        
       },
     ],
   },
   {
     name: ' Seva sankalp ',
     details:
-    'Tiffin service for mahesana home quarantine patient. Regular charge 50Rs. & Token charge for economically weaker class 10Rs. Register your phone number with address and corona positive report before one day.Time: Morning 8 to 10. ',
+      'Tiffin service for mahesana home quarantine patient. Regular charge 50Rs. & Token charge for economically weaker class 10Rs. Register your phone number with address and corona positive report before one day.Time: Morning 8 to 10. ',
     address: {
       city: 'Mahesana',
       state: 'Gujarat',
@@ -393,24 +386,21 @@ export const tiffin_service_data: Info[] = [
       {
         name: ' yashodharbhai',
         mobileNo: ' +91-9974063733',
-        
       },
       {
         name: ' Nitinbhai',
         mobileNo: ' +91-9408515335',
-        
       },
       {
         name: ' Dipakbhai',
         mobileNo: ' +91-9426070618',
-        
       },
     ],
   },
   {
     name: 'Rajkot Manav Seva Group',
     details:
-    'Free food packet for home quarentine family living in Rajkotas as well as for the family of a patient admitted to the hospital from outstation. ',
+      'Free food packet for home quarentine family living in Rajkotas as well as for the family of a patient admitted to the hospital from outstation. ',
     address: {
       city: 'Rajkot',
       state: 'Gujarat',
@@ -420,47 +410,38 @@ export const tiffin_service_data: Info[] = [
       {
         name: 'Rajanbhai Shah',
         mobileNo: ' +91-989822020',
-        
       },
       {
         name: 'pareshbhai Unadakat',
         mobileNo: ' +91-9925751088',
-        
       },
       {
         name: 'Avadhabhai Gondhiya',
         mobileNo: ' +91-9974044444',
-        
       },
       {
         name: 'Asifbhai padharasi',
         mobileNo: ' +91-7878347007',
-        
       },
       {
         name: 'Niravbhai Udeshi',
         mobileNo: ' +91-9898094032',
-        
       },
       {
         name: ' Sagar Shah',
         mobileNo: ' +91-7698645678',
-        
       },
       {
         name: 'Kavanbhai ved',
         mobileNo: ' +91-8401999986',
-        
       },
       {
         name: 'Naranbhai Japada',
         mobileNo: ' +91-9712777712',
-        
       },
       {
         name: 'Bhagirathsinh Jadeja',
         mobileNo: ' +91-8153000098',
-        
       },
     ],
   },
