@@ -1,15 +1,23 @@
-import { Info } from '../../../types/info';
+import {
+  Info,
+  SlimAddress,
+  SlimInfo,
+  slimInfoToInfo,
+} from '../../../types/info';
 
-export const tiffin_gujarat_ahmedabad_data: Info[] = [
+const address: SlimAddress = {
+  city: 'Ahmedabad',
+  state: 'Gujarat',
+  country: 'India',
+};
+
+const data: SlimInfo[] = [
+
   {
     name: 'Gurukrupa foundation - Kantaben kntilal Shah',
     details:
       'only for jain cast and available areas are naranpura, sola road, ghatlodiya , nirnaynagar , gota , bopal , cetelite',
-    address: {
-      city: 'Ahmadabad',
-      state: 'Gujarat',
-      country: 'India',
-    },
+    
     contacts: [
       {
         name: 'gurukrupa foundation',
@@ -57,11 +65,7 @@ export const tiffin_gujarat_ahmedabad_data: Info[] = [
     name: 'Hotel Skyland',
     details:
       'home food available only in 100 rupees free home delivery for quarantine people within 4 km',
-    address: {
-      city: 'Ahmadabad',
-      state: 'Gujarat',
-      country: 'India',
-    },
+    
     contacts: [
       {
         name: 'office',
@@ -82,11 +86,7 @@ export const tiffin_gujarat_ahmedabad_data: Info[] = [
     name: 'Free tiffin service',
     details:
       'Free tiffin service .  Please register name and address up to 10pm so we can provide tiffin next day',
-    address: {
-      city: 'Ahmadabad',
-      state: 'Gujarat',
-      country: 'India',
-    },
+   
     contacts: [
       {
         name: 'Call here for register',
@@ -114,11 +114,7 @@ export const tiffin_gujarat_ahmedabad_data: Info[] = [
     name: ' Apoorvaa',
     details:
       'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
-    address: {
-      city: 'Ahmadabad',
-      state: 'Gujarat',
-      country: 'India',
-    },
+    
     contacts: [
       {
         name: ' Shri Apurva Bhagat ',
@@ -127,3 +123,7 @@ export const tiffin_gujarat_ahmedabad_data: Info[] = [
     ],
   },
 ];
+export const tiffin_gujarat_ahmedabad_data: Info[] = slimInfoToInfo(
+  data,
+  address
+);
