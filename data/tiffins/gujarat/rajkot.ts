@@ -1,14 +1,21 @@
-import { Info } from '../../../types/info';
+import {
+  Info,
+  SlimAddress,
+  SlimInfo,
+  slimInfoToInfo,
+} from '../../../types/info';
 
-export const tiffin_gujarat_rajkot_data: Info[] = [
+const address: SlimAddress = {
+  city: 'Rajkot',
+  state: 'Gujarat',
+  country: 'India',
+};
+
+const data: SlimInfo[] = [
     {
         name: 'JBO foods',
         details: 'Lunch Delivery ( time for Delivery 1:15pm to 2:30pm)',
-        address: {
-          city: 'Rajkot',
-          state: 'Gujarat',
-          country: 'India',
-        },
+       
         contacts: [
           {
             name: 'Rupal Doshi',
@@ -32,11 +39,7 @@ export const tiffin_gujarat_rajkot_data: Info[] = [
         name: 'Ketan Mehta - Jain Foods',
         details:
           'We provide Jain food parcels only. Order before min 5 - 6 hours of lunch / dinner.Delivery will be for Lunch (1:30pm - 2:30pm) and Dinner ( 7:00pm - 7:30pm)',
-        address: {
-          city: 'Rajkot',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: ' Ketan Mehta ',
@@ -47,11 +50,7 @@ export const tiffin_gujarat_rajkot_data: Info[] = [
       {
         name: ' Shila Doshi - Shri Mahavir Tiffin services',
         details: 'We are available for food delivery',
-        address: {
-          city: 'Rajkot',
-          state: 'Gujarat',
-          country: 'India',
-        },
+       
         contacts: [
           {
             name: ' Shila Doshi ',
@@ -63,11 +62,7 @@ export const tiffin_gujarat_rajkot_data: Info[] = [
         name: 'Rajkot Manav Seva Group',
         details:
           'Free food packet for home quarentine family living in Rajkotas as well as for the family of a patient admitted to the hospital from outstation. ',
-        address: {
-          city: 'Rajkot',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: 'Rajanbhai Shah',
@@ -108,3 +103,7 @@ export const tiffin_gujarat_rajkot_data: Info[] = [
         ],
       },
 ]
+export const tiffin_gujarat_rajkot_data: Info[] = slimInfoToInfo(
+  data,
+  address
+);

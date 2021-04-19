@@ -1,15 +1,23 @@
-import { Info } from '../../../types/info';
+import {
+  Info,
+  SlimAddress,
+  SlimInfo,
+  slimInfoToInfo,
+} from '../../../types/info';
 
-export const tiffin_gujarat_bhavnagar_data: Info[] = [
+const address: SlimAddress = {
+  city: 'Bhavnagar',
+  state: 'Gujarat',
+  country: 'India',
+};
+
+const data: SlimInfo[] = [
+
     {
         name: 'BJP Bhavnagar - Rajeev Pandya',
         details:
           'Free tiffin service from 13th April. Please register name and address before 9 AM in morning and 5 PM in evening',
-        address: {
-          city: 'Bhavnagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: 'Mahipatbhai Trivedi',
@@ -30,11 +38,7 @@ export const tiffin_gujarat_bhavnagar_data: Info[] = [
         name: 'Bhavnagar Jain swetambar murti  - jayukaka tanawala ',
         details:
           'Free tiffin service from 9th March. if anyone interested to donate in this fund contact our head office',
-        address: {
-          city: 'Bhavnagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: 'office',
@@ -68,11 +72,7 @@ export const tiffin_gujarat_bhavnagar_data: Info[] = [
         name: 'Ramvadi ',
         details:
           'Free tiffin service from 9th April.  Please register name and address before 9 AM in morning and 5 PM in evening',
-        address: {
-          city: 'Bhavnagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: 'office',
@@ -96,11 +96,7 @@ export const tiffin_gujarat_bhavnagar_data: Info[] = [
         name: ' Satkarma Jivdaya ',
         details:
           'Tiffin service will be provided free of cost at night for meals to the patients admitted to Bhavnagar Civil Hospital. Phone for Tiffin from 5 to 7 p.m. ',
-        address: {
-          city: 'Bhavnagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: ' Hareshbhai B. Mer ',
@@ -110,3 +106,7 @@ export const tiffin_gujarat_bhavnagar_data: Info[] = [
       },
     
 ];
+export const tiffin_gujarat_bhavnagar_data: Info[] = slimInfoToInfo(
+  data,
+  address
+);

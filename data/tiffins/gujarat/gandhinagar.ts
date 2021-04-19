@@ -1,15 +1,23 @@
-import { Info } from '../../../types/info';
 
-export const tiffin_gujarat_gandhinagar_data: Info[] = [
+  import {
+    Info,
+    SlimAddress,
+    SlimInfo,
+    slimInfoToInfo,
+  } from '../../../types/info';
+  
+  const address: SlimAddress = {
+    city: 'Gandhinagar',
+    state: 'Gujarat',
+    country: 'India',
+  };
+  
+  const data: SlimInfo[] = [
     {
         name: ' Shikshapatri Foundation',
         details:
           'We are available for food delivery.Please register your address and contact number on below number before one day. ',
-        address: {
-          city: 'Gandhinagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: ' Admin ',
@@ -21,11 +29,7 @@ export const tiffin_gujarat_gandhinagar_data: Info[] = [
         name: 'Radhe Radhe Parivar',
         details:
           'We are available for food delivery.Please register your address and contact number on below number.Interested people can join or donate. ',
-        address: {
-          city: 'Gandhinagar',
-          state: 'Gujarat',
-          country: 'India',
-        },
+        
         contacts: [
           {
             name: ' admin ',
@@ -38,3 +42,7 @@ export const tiffin_gujarat_gandhinagar_data: Info[] = [
         ],
       },
 ]
+export const tiffin_gujarat_gandhinagar_data: Info[] = slimInfoToInfo(
+  data,
+  address
+);
