@@ -102,6 +102,105 @@ const data: SlimInfo[] = [
           },
         ],
       },
+      {
+        name: '1944 & The Havmor Restaurant',
+        details: 'Healthy Quarantines meals.Area Serviced: Navrangpura, Maninagar, Prahladnagar, Bopal Ambli, Sindhu Bhavan Road, Vaishno Devi Circle',
+       
+        contacts: [
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7926405533',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7926403355',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7925463057',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7925463058',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7926932666',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-8238905151',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7929704949',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9512851944',
+          },
+        ],
+      },
+      {
+        name: 'Aastha foundation',
+        details: 'Healthy Quarantines meals.Area Serviced: Ambawadi, Makarba, Nehrunagar Paldi, Parimal, Vasna, Vejalpur',
+       
+        contacts: [
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9825536551',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9898222986',
+          },
+        
+        ],
+      },
+      {
+        name: 'Adixa Kitchen',
+        details: 'Healthy Quarantines meals.Area Serviced: Bodakdev, Drive-in Road, Gurukul, Judges Bunglow, Thaltej, Vastrapur',
+       
+        contacts: [
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9374136960',
+          },
+         
+        
+        ],
+      },
+      {
+        name: 'Ahmedabad Dabbawala',
+        details: 'Healthy Quarantines meals.Area Serviced: Ghodasar, Isanpur, Maninagar, Kankaria, Khokhra',
+       
+        contacts: [
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9106895758',
+          },
+          {
+            name: ' admin ',
+            mobileNo: ' +91-9876619156',
+          },
+         
+        
+        ],
+      },
+      {
+        name: 'Amrutdhara Tiffin',
+        details: 'Healthy Quarantines meals.Area Serviced: Gota, Naranpura, Science-City, Shashtrinagar, Sola',
+       
+        contacts: [
+          {
+            name: ' admin ',
+            mobileNo: ' +91-7265032318',
+          },
+        
+         
+        
+        ],
+      },
 ]
 export const tiffin_gujarat_rajkot_data: Info[] = slimInfoToInfo(
   data,
