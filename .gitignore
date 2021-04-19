@@ -341,5 +341,7 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,react,typings,webstorm+all,visualstudiocode
 
 
-public/sw.js
-public/workbox-*.js
+/public/sw.js
+/public/workbox-*.js
+/public/sw.js.map
+/public/workbox-*.js.map

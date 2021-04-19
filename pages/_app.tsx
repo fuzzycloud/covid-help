@@ -21,6 +21,7 @@ import Head from '../components/head';
 import MenuIcon from '@material-ui/icons/Menu';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import {
+  Icon,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -29,6 +30,7 @@ import {
 import { useRouter } from 'next/router';
 import { serviceRoutes } from '../data/routes';
 import Footer from '../components/footer';
+import { HomeRounded } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -141,7 +143,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap>
+              <Typography onClick={() => router.push('/')} variant="h6" noWrap>
+                <IconButton>
+                  <HomeRounded />
+                </IconButton>
                 Covid Help
               </Typography>
 
