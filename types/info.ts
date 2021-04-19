@@ -20,6 +20,9 @@ export type Info = {
   contacts: Contact[];
 };
 
+export type AddressLines = Pick<Address, 'address_line' | 'address_line2'>;
+export type SlimInfo = Omit<Info, 'address'> & { address?: AddressLines };
+
 export type SlimAddress = Pick<Address, 'city' | 'state' | 'country'>;
 
 export const infoToSlimAddresses: (infos: Info[]) => SlimAddress[] = (
@@ -64,4 +67,11 @@ export const infoByParams: (params: SlimAddress, data: Info[]) => Info[] = (
     )
     .uniqBy((x) => x.name)
     .value();
+};
+
+export const slimInfoToInfo = (data: SlimInfo[], address) => {
+  return data.map((x) => ({
+    ...x,
+    address: { ...x.address, ...address },
+  }));
 };
