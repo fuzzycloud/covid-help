@@ -104,7 +104,18 @@ const data: SlimInfo[] = [
           },
         ],
       },
-    
+      {
+        name: 'Shree Rajanibhai Kanada group',
+        details:
+          'Tiffin service will be provided free of cost in the area of 3km from Don Chock.Register your meal before 10 AM & 5PM.',
+        
+        contacts: [
+          {
+            name: ' Aartiben Soni ',
+            mobileNo: ' +91-9974146014',
+          },
+        ],
+      },
 ];
 export const tiffin_gujarat_bhavnagar_data: Info[] = slimInfoToInfo(
   data,
