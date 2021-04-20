@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "postbuild": "next-on-netlify",
     "start": "next start",
     "prettier": "prettier --write ."
   },
