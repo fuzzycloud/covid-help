@@ -32,12 +32,28 @@
         
         contacts: [
           {
-            name: ' admin ',
+            name: ' Admin ',
             mobileNo: ' +91-8141743241',
           },
           {
-            name: ' admin ',
+            name: ' Admin ',
             mobileNo: ' +91-9157637877',
+          },
+        ],
+      },
+      {
+        name: 'Bansari',
+        details:
+          'We are available for food delivery.Please just send your Medical details and Address on this WhatsApp and we will help you. ',
+        
+        contacts: [
+          {
+            name: ' Admin ',
+            mobileNo: ' +91-9904142834',
+          },
+          {
+            name: ' Admin ',
+            mobileNo: ' +91-9624796807',
           },
         ],
       },

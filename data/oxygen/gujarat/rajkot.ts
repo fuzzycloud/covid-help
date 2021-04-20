@@ -43,7 +43,7 @@ import {
           },
           {
             name: 'Ajitsinh Dodiya Freedom Yuva Group',
-            mobileNo: '+91-8200329881',
+            mobileNo: '+91-82003 29881',
           },
           {
             name: 'Nilesh Harsoda',
@@ -61,8 +61,42 @@ import {
             name: 'Ashish Joshi',
             mobileNo: '+91-94269 00500',
           },
-          
+          {
+            name: 'PravinBhai',
+            mobileNo: '+91-93741 27904',
+          },
+          {
+            name: 'RajeshBhai',
+            mobileNo: '+91-98982 20202',
+          },
+          {
+            name: 'Paresh Unadkat',
+            mobileNo: '+91-99257 41088',
+          },
+          {
+            name: 'Nirav Udeshi',
+            mobileNo: '+91-98980 94032',
+          },
+          {
+            name: 'AshifBhai',
+            mobileNo: '+91-99042 55795',
+          },
+          {
+            name: 'Sagar Shah',
+            mobileNo: '+91-74055 55955',
+          },
       ],
     },
+    {
+      name: 'Radical Transforming Healthcare',
+      details:
+        'You may get fully oxygen machine from below numbers.(for Rent/Sale)',
+      contacts: [
+        {
+          name: 'Admin',
+          mobileNo: '+91-75739 30303, +91-83474 43034',
+        },
+      ],
+    }
 ]
 export const oxygen_gujarat_rajkot_data: Info[] = slimInfoToInfo(data, address);

@@ -59,6 +59,34 @@ const data: SlimInfo[] = [
         ],
       },
       {
+        name: 'Iskon Rajkot',
+        details:
+          'Order before 1 day on given WhatsApp number for lunch.Delivery will be (for Lunch) till 01:00pm.',
+        
+        contacts: [
+          {
+            name: ' Prasanatma Das ',
+            mobileNo: ' +91-8866582398',
+          },
+          {
+            name: ' Shradhavan Das ',
+            mobileNo: ' +91-9898165358',
+          },
+        ],
+      },
+      {
+        name: 'PRP Foundation',
+        details:
+        'Free food for home quarantine family living in Rajkot as well as for the family of a patient admitted to the hospital from outstation.(Only Lunch) ',
+        
+        contacts: [
+          {
+            name: ' Admin ',
+            mobileNo: ' +91-9924406653 / +91-9924345678 / +91-7874503365 ',
+          },
+        ],
+      },
+      {
         name: 'Rajkot Manav Seva Group',
         details:
           'Free food packet for home quarentine family living in Rajkotas as well as for the family of a patient admitted to the hospital from outstation. ',
