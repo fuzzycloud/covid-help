@@ -7,7 +7,6 @@ export const ServiceList = ({
   data,
   params,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(params);
   if (data) {
     return <InfoView data={data} />;
   }
