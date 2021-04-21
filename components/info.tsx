@@ -12,10 +12,9 @@ type InfoViewProps = {
 };
 const InfoView = ({ data }: InfoViewProps) => {
   return (
-    <div>
       <List>
         {data.map((x, i) => (
-            <ListItem key={`${x}-${i}`}>
+            <ListItem key={`${i}`}>
               <ListItemText
                 primary={x.name}
                 secondary={
@@ -36,7 +35,6 @@ const InfoView = ({ data }: InfoViewProps) => {
             </ListItem>
         ))}
       </List>
-    </div>
   );
 };
 

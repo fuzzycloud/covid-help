@@ -26,15 +26,7 @@ export type SlimInfo = Omit<Info, 'address'> & { address?: AddressLines };
 
 export type SlimAddress = Pick<Address, 'city' | 'state' | 'country'>;
 
-export const infoToSlimAddresses: (infos: Info[]) => SlimAddress[] = (
-  infos: Info[]
-) => {
-  return infos.map((x) => ({
-    city: x.address.city,
-    state: x.address.state,
-    country: x.address.country,
-  }));
-};
+
 
 export const infoToPath: (service: string) => Promise<{ params: SlimAddress }[]> = async (
   service
