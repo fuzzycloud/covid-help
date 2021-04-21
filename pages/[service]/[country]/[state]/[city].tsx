@@ -2,10 +2,9 @@ import React from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { infoByParams, infoToPath } from '../../../../types/info';
 import InfoView from '../../../../components/info';
-import { home_isolation_service_data } from '../../../../data/home_isolation_service';
+import { slimServiceRoutes } from '../../../../data/routes';
 export const ServiceList = ({
   data,
-  params,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (data) {
     return <InfoView data={data} />;
@@ -14,17 +13,19 @@ export const ServiceList = ({
 };
 
 export const getStaticProps = async ({ params }) => {
-  const data = infoByParams(params, home_isolation_service_data);
+  const data = await infoByParams(params);
   return {
     props: {
-      data,
-      params,
+      data
     },
+    revalidate: 4 * 60 * 60, //In sec
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = infoToPath(home_isolation_service_data);
+  const routes = await slimServiceRoutes();
+  const pathData = await Promise.all(routes.map(x => infoToPath(x.title.toLowerCase()))) ;
+  const paths = pathData.flat();
   return { paths, fallback: false };
 };
 

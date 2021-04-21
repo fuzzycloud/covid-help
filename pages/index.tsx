@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
-import { serviceRoutes } from '../data/routes';
+import { slimServiceRoutes } from '../data/routes';
+import { InferGetStaticPropsType } from 'next';
 
-const Home = () => {
+const Home = ({data} : InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   return (
     <div>
-      {serviceRoutes.map((item, index) => (
-        <>
+      {data.map((item, index) => (
+        <div key={`${item.title}_${index}`}>
           <Button
-            key={`${item.title}_${index}`}
             style={{ paddingBottom: '5px' }}
             variant="contained"
             color="primary"
@@ -20,10 +20,19 @@ const Home = () => {
           </Button>
           <br />
           <br />
-        </>
+        </div>
       ))}
     </div>
   );
 };
 
+export const getStaticProps = async () => {
+  const data = await  slimServiceRoutes();
+  return {
+    props : {
+      data
+    },
+    revalidate: 4 * 60 * 60, //In sec
+  }
+}
 export default Home;
