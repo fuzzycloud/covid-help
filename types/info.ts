@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { serviceRoutes } from '../data/routes';
 
 export type Address = {
   address_line?: string;
@@ -35,9 +36,10 @@ export const infoToSlimAddresses: (infos: Info[]) => SlimAddress[] = (
   }));
 };
 
-export const infoToPath: (infos: Info[]) => { params: SlimAddress }[] = (
-  infos
+export const infoToPath: (service: string) => Promise<{ params: SlimAddress }[]> = async (
+  service
 ) => {
+  const infos = await serviceRoutes.find(x => x.title.toLowerCase() === service).data();
   const addresses = _.chain(infos)
     .map(
       (x) =>
@@ -45,9 +47,10 @@ export const infoToPath: (infos: Info[]) => { params: SlimAddress }[] = (
           state: x.address.state.toLowerCase(),
           city: x.address.city.toLowerCase(),
           country: x.address.country.toLowerCase(),
-        } as SlimAddress)
+          service
+        })
     )
-    .uniqBy((x) => `${x.country}-${x.state}-${x.city}`)
+    .uniqBy((x) => `${service}-${x.country}-${x.state}-${x.city}`)
     .value();
 
   return _.map(addresses, (x) => ({
@@ -55,10 +58,11 @@ export const infoToPath: (infos: Info[]) => { params: SlimAddress }[] = (
   }));
 };
 
-export const infoByParams: (params: SlimAddress, data: Info[]) => Info[] = (
-  params,
-  data
+export const infoByParams= async (
+  params : SlimAddress & {service: string},
 ) => {
+  // This logic must be optmized and data should come from server.
+  const data = await serviceRoutes.find(x => x.title.toLowerCase() === params.service).data();
   return _.chain(data)
     .filter(
       (x) =>

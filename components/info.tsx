@@ -15,7 +15,6 @@ const InfoView = ({ data }: InfoViewProps) => {
     <div>
       <List>
         {data.map((x, i) => (
-          <li>
             <ListItem key={`${x}-${i}`}>
               <ListItemText
                 primary={x.name}
@@ -33,9 +32,8 @@ const InfoView = ({ data }: InfoViewProps) => {
                   </React.Fragment>
                 }
               />
+              <Divider />
             </ListItem>
-            <Divider />
-          </li>
         ))}
       </List>
     </div>
