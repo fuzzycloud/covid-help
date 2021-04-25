@@ -158,6 +158,9 @@ export const AddServices = ({app} : AddServicesProps) => {
   const {data : services} = useSWR<ServiceData[]>('/api/services');
   const {data: states} = useSWR<string[]>('/api/states');
   const [user, setUser] = useState<firebase.User>(null);
+  useEffect(() => {
+    auth.onAuthStateChanged(user => setUser(user));
+  } )
   if(!services && !states) {
     return  <CircularProgress />
   }
