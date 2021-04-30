@@ -1,7 +1,8 @@
-import Autocomplete from '@material-ui/lab/Autocomplete';
+
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { CircularProgress, TextField } from '@material-ui/core';
+
+import { IonSelect, IonSelectOption, IonSpinner } from '@ionic/react';
 
 export type ServiceData = {
   title: string;
@@ -9,66 +10,74 @@ export type ServiceData = {
 }
 
 type ServiceSelectionProps = {
-  setSelectedService: (item : string) => void
+  setSelectedService: (item: string) => void
 }
-const ServiceSelection = ({setSelectedService} : ServiceSelectionProps) => {
+const ServiceSelection = ({ setSelectedService }: ServiceSelectionProps) => {
   const { data, error } = useSWR<ServiceData[]>(`/api/services`);
   if (error) {
     return <p>Failed to fetch data</p>;
   }
   if (!data) {
-    return <CircularProgress />
+    return <IonSpinner />
   }
   return (
-  <Autocomplete id={'service-selection'} onChange={(event, value) => setSelectedService(value)}  options={data.map(x => x.title)} renderInput={(params) => (
-    <TextField {...params} label="Select Service" variant="outlined" />
-  )}/>)
+    <IonSelect id={'service-selection'} onIonChange={e => setSelectedService(e.detail.value)} >
+      {/* {data.map(user => (
+        <IonSelectOption key={user.title} value={user}>
+          {user.title}
+        </IonSelectOption>
+      ))} */}
+    </IonSelect>
+  )
 }
 
 type StateSelectionProps = {
-  setStateSelection : (item: string) => void
+  setStateSelection: (item: string) => void
 }
 
-const StateSelection = ({setStateSelection} : StateSelectionProps) => {
-  const { data , error } = useSWR<string[]>('/api/states');
+const StateSelection = ({ setStateSelection }: StateSelectionProps) => {
+  const { data, error } = useSWR<string[]>('/api/states');
   if (error) {
     return <p>Failed to fetch data</p>;
   }
   if (!data) {
-    return <CircularProgress />
+    return <IonSpinner />
   }
   return (
-    <Autocomplete id={'state-selection'} onChange={(event, value) => setStateSelection(value)}  options={data} renderInput={(params) => (
-      <TextField {...params} label="Select Service" variant="outlined" />
-    )}/>)
+    <IonSelect id={'state-selection'} onIonChange={e => setStateSelection(e.detail.value)} >
+      {/* {data.map(user => (
+        <IonSelectOption key={user.title} value={user}>
+          {user.title}
+        </IonSelectOption>
+      ))} */}
+     
+    </IonSelect>)
 }
 
 type DistrictSelectionProps = {
   setSelectedDistrict: (item: string) => void
-  selectedState : string
+  selectedState: string
 }
 
-const DistrictSelection = ({ selectedState, setSelectedDistrict} : DistrictSelectionProps) => {
-  const { data , error } = useSWR<string[]>(`/api/states/${selectedState}`);
+const DistrictSelection = ({ selectedState, setSelectedDistrict }: DistrictSelectionProps) => {
+  const { data, error } = useSWR<string[]>(`/api/states/${selectedState}`);
   if (error) {
     return <p>Failed to fetch data</p>;
   }
   if (!data) {
-    return <CircularProgress />
+    return <IonSpinner />
   }
 
-  return <Autocomplete id={'district-selection'} onChange={(event, value) => setSelectedDistrict(value)}  options={data} renderInput={(params) => (
-    <TextField {...params} label="Select District" variant="outlined" />
-  )}/>
+  return <IonSelect id={'district-selection'} onIonChange={e => setSelectedDistrict(e.detail.value)} />
 }
 
 type ListOfInfoProps = {
   selectedService: string;
-  selectedState : string;
-  selectedDistrict : string;
+  selectedState: string;
+  selectedDistrict: string;
 }
 
-const ListOfInfo = ({selectedDistrict, selectedService, selectedState} : ListOfInfoProps) => {
+const ListOfInfo = ({ selectedDistrict, selectedService, selectedState }: ListOfInfoProps) => {
   return <div>
     {`${selectedService}-${selectedState}-${selectedDistrict}`}
   </div>

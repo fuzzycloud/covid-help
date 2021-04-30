@@ -7,6 +7,12 @@ import {
   IonSearchbar,
 
   IonContent,
+  IonList,
+  IonListHeader,
+  IonItem,
+  IonLabel,
+  IonSelect,
+  IonSelectOption,
 } from "@ionic/react";
 import {
   personCircle,
@@ -32,6 +38,9 @@ import {
 } from "@ionic/react";
 import { InferGetStaticPropsType } from "next";
 import { getFirebaseApp } from "../config";
+import { FindServices } from "../find_services";
+import { AddServices } from "../add_services";
+import services from "../../pages/api/services";
 
 // const router = useRouter();
 const nav = document.querySelector('ion-nav');
@@ -77,6 +86,8 @@ const Home = ({ config }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+ 
+  
   return (
     <div>
       <IonPage>
@@ -101,33 +112,41 @@ const Home = ({ config }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <IonSearchbar placeholder="Search here" color="success-tint" />
           <div style={{ padding: 5 }}>
             <ion-item>
+              <ion-label>Requirement</ion-label>
+              <ion-select placeholder="Requirement" >
+                <ion-select-option value="f">Tiffins</ion-select-option>
+                <ion-select-option value="m">Oxygen</ion-select-option>
+              </ion-select>
+               {/* <FindServices /> */}
+            </ion-item>
+            <ion-item>
               <ion-label>State</ion-label>
-              <ion-select placeholder="Select State">
-                <ion-select-option value="f">Gujarat</ion-select-option>
-                <ion-select-option value="m">Uttar Pradesh</ion-select-option>
+              <ion-select placeholder="Select State" >
+                <ion-select-option value={value} >Gujarat</ion-select-option>
+                {/* <ion-select-option value="m">Uttar Pradesh</ion-select-option> */}
               </ion-select>
             </ion-item>
             <ion-item>
               <ion-label>City</ion-label>
-              <ion-select placeholder="Select City">
-                <ion-select-option value="f">Bhavnagar</ion-select-option>
-                <ion-select-option value="m">Surat</ion-select-option>
-                <ion-select-option value="k">Rajkot</ion-select-option>
+              <ion-select placeholder="Select City" >
+                <ion-select-option value="f">Porbandar</ion-select-option>
+                <ion-select-option value="m">Rajkot</ion-select-option>
               </ion-select>
             </ion-item>
-            <ion-item>
-              <ion-label>Choose your requirement</ion-label>
-              <ion-select placeholder="Select">
-                <ion-select-option value="f">Oxygen</ion-select-option>
-                <ion-select-option value="m">Tiffin</ion-select-option>
-                <ion-select-option value="n">Beds</ion-select-option>
-                <ion-select-option value="o">Home  Isolation</ion-select-option>
-              </ion-select>
-            </ion-item>
+
             <ion-item lines="none">
               <IonButton routerLink="/list" color="success" size="medium" fill="outline" style={{ marginLeft: 'auto', marginRight: 'auto' }}>Apply</IonButton>
             </ion-item>
           </div>
+          <TabPanel value={value} index={0}>
+            <FindServices />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <AddServices app={firebaseApp} />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            Item Three
+      </TabPanel>
         </IonContent>
       </IonPage>
     </div>

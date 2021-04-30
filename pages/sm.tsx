@@ -59,13 +59,13 @@ const Home = ({config} : InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      {/* <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Search Services" {...a11yProps(0)} />
           <Tab label="Add Services" {...a11yProps(1)} />
           <Tab label="Contact Us" {...a11yProps(2)} />
         </Tabs>
-      </AppBar>
+      </AppBar> */}
       <TabPanel value={value} index={0}>
         <FindServices />
       </TabPanel>
