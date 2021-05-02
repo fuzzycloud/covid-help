@@ -1,13 +1,12 @@
 import React from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { infoByParams, infoToPath } from '../../../../types/info';
-import InfoView from '../../../../components/info';
 import { slimServiceRoutes } from '../../../../data/routes';
 export const ServiceList = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (data) {
-    return <InfoView data={data} />;
+    return <div>Some Info</div>;
   }
   return null;
 };

@@ -1,4 +1,3 @@
-import { List, ListItem, ListItemText } from '@material-ui/core';
 import React from 'react';
 import { useRouter } from 'next/router';
 
@@ -11,23 +10,24 @@ type CitiesProps = {
 
 const Cities = ({ cities, baseUrl, state, country }: CitiesProps) => {
   const router = useRouter();
-  return (
-    <List component="nav" aria-label="secondary mailbox folders">
-      {cities.map((x, i) => (
-        <ListItem
-          key={`${x}_${i}`}
-          button
-          onClick={() => {
-            router.push(
-              `${baseUrl}/${country.toLowerCase()}/${state.toLowerCase()}/${x.toLowerCase()}`
-            );
-          }}
-        >
-          <ListItemText primary={x} />
-        </ListItem>
-      ))}
-    </List>
-  );
+  return null;
+  // return (
+  //   <List component="nav" aria-label="secondary mailbox folders">
+  //     {cities.map((x, i) => (
+  //       <ListItem
+  //         key={`${x}_${i}`}
+  //         button
+  //         onClick={() => {
+  //           router.push(
+  //             `${baseUrl}/${country.toLowerCase()}/${state.toLowerCase()}/${x.toLowerCase()}`
+  //           );
+  //         }}
+  //       >
+  //         <ListItemText primary={x} />
+  //       </ListItem>
+  //     ))}
+  //   </List>
+  // );
 };
 
 export default Cities;

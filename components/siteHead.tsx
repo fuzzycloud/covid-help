@@ -12,7 +12,7 @@ type HeadProps = {
   ogImage?: string;
 };
 
-const Head = (props: HeadProps) => (
+const SiteHead = (props: HeadProps) => (
   <NextHead>
     <meta charSet="UTF-8" />
     <title>{props.title || ''}</title>
@@ -78,7 +78,11 @@ const Head = (props: HeadProps) => (
     <meta property="og:image" content={props.ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
   </NextHead>
 );
 
-export default Head;
+export default SiteHead;

@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import React, { useState } from 'react';
 import States from './states';
-import { Divider } from '@material-ui/core';
 import Cities from './cities';
 import { SlimAddress } from '../types/info';
 type InfoProps = {
@@ -26,7 +25,6 @@ const CitySelection = ({ baseUrl, addresses }: InfoProps) => {
         setCities={setCities}
         addresses={addresses}
       />
-      <Divider />
       <Cities
         baseUrl={baseUrl}
         cities={cities}

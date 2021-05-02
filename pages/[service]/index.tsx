@@ -3,7 +3,6 @@ import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { slimServiceRoutes } from '../../data/routes';
 import useSWR from 'swr';
 import { SlimAddress } from '../../types/info';
-import { CircularProgress } from '@material-ui/core';
 import CitySelection from '../../components/citySelection';
 
 const Home = ({ service }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -12,7 +11,7 @@ const Home = ({ service }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return <div>Failed to load data</div>;
   }
   if (!data) {
-    return <CircularProgress />;
+    return null;
   }
   return <CitySelection baseUrl={`${service}`} addresses={data} />;
 };

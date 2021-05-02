@@ -1,84 +1,55 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import React from 'react';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: '25ch',
-    },
-  })
-);
+import { BulmaField } from '../components/bulma/form/input';
+import { useForm } from 'react-hook-form';
+import { BulmaSubmit } from '../components/bulma/form/submit';
+import { BulmaAreaField } from '../components/bulma/form/area';
+import { ServiceFilter } from '../components/temp/serviceFilter';
+import { BulmaDanger } from '../components/bulma/bulmaDanger';
+import { FormAddress } from '../components/temp/add_or_update/address';
+import { FormInput } from '../components/temp/add_or_update/types';
+import { FormContacts } from '../components/temp/add_or_update/contacts';
 
 const AddOrUpdate = () => {
-  const classes = useStyles();
+  const {
+    control,
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { isDirty, isValid, errors },
+  } = useForm<FormInput>();
+
+  const onSubmit = (data) => console.log(data);
+  const selectedState = watch('address.state');
+
   return (
-    <form
-      name="add_service"
-      action={'/'}
-      className={classes.root}
-      method="POST"
-      autoComplete={'off'}
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-    >
-      <input type="hidden" name="form-name" value="add_service" />
-      <TextField
-        id="name"
-        name="name"
-        label="Name"
-        style={{ margin: 8 }}
-        placeholder="Name"
-        helperText="Please provide your name"
-        fullWidth
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <BulmaField
+        name={'name'}
         required
-        margin="normal"
-        InputLabelProps={{
-          shrink: true,
-        }}
+        label={'Name'}
+        placeholder={'Enter Name'}
+        type={'text'}
+        register={register('name', { required: 'Name is required' })}
       />
-      <TextField
-        id="details"
-        name="details"
-        label="Details"
-        style={{ margin: 8 }}
-        placeholder="Details"
-        helperText="Please provide your details"
-        fullWidth
-        multiline
-        rows={4}
-        required
-        margin="normal"
-        InputLabelProps={{
-          shrink: true,
-        }}
+      {errors.name && <BulmaDanger msg={errors.name.message} />}
+      <BulmaAreaField
+        name={'details'}
+        label={'Detail'}
+        placeholder={'Please Enter Details'}
+        register={register('details')}
       />
-      <TextField
-        id="contacts"
-        name="contacts"
-        label="Contacts"
-        style={{ margin: 8 }}
-        placeholder="Contacts"
-        helperText="Please provide all contact nos"
-        fullWidth
-        required
-        multiline
-        rows={4}
-        margin="normal"
-        InputLabelProps={{
-          shrink: true,
-        }}
+      <ServiceFilter
+        register={register('service', { required: 'Service is required' })}
       />
-      <Button type={'submit'} fullWidth variant="contained" color="primary">
-        Submit
-      </Button>
+      {errors.service && <BulmaDanger msg={errors.service.message} />}
+      <FormAddress
+        register={register}
+        selectedState={selectedState}
+        setValue={setValue}
+      />
+      <FormContacts control={control} register={register} />
+      <BulmaSubmit disabled={!isDirty || !isValid} />
     </form>
   );
 };

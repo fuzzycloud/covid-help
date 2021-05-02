@@ -1,84 +1,56 @@
-
-import {
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonMenu,
-  IonMenuToggle,
-  IonRouterContext,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react';
-import { useContext, useEffect, useState } from 'react';
-import { cog, flash, list,cart, home, heart,person } from 'ionicons/icons';
-import { useHistory, useLocation } from 'react-router-dom';
-
-const pages = [
-  {
-    title: 'Home',
-    icon: home,
-    url: '/home',
-  },
-  {
-    title: 'Contact',
-    icon: person,
-    url: '/contact',
-  },
- 
-];
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Menu = () => {
-  // const { StatusBar } = Plugins;
+  const router = useRouter()
+  const isActive = (path : string) => {
+    if (router.asPath === path) {
+      return "is-active";
+    }
+    return '';
+  }
 
-  const ionRouterContext = useContext(IonRouterContext);
-  const location = useLocation();
+  const [isOpen, setIsOpen]  = useState(false);
 
-  const [isDark, setIsDark] = useState(false);
+   return (
+      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <a className="navbar-item" href="/">
+            Covid Help India
+          </a>
 
-  // const handleOpen = async () => {
-  //   try {
-  //     await StatusBar.setStyle({
-  //       style: isDark ? StatusBarStyle.Light : StatusBarStyle.Dark,
-  //     });
-  //   } catch {}
-  // };
-  // const handleClose = async () => {
-  //   try {
-  //     await StatusBar.setStyle({
-  //       style: isDark ? StatusBarStyle.Dark : StatusBarStyle.Light,
-  //     });
-  //   } catch {}
-  // };
+          <a role="button" onClick={() => setIsOpen(!isOpen) } className={`navbar-burger ${isOpen ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false"
+             data-target="navbarBasicExample">
+            <span aria-hidden="true"/>
+            <span aria-hidden="true"/>
+            <span aria-hidden="true"/>
+          </a>
+        </div>
 
-//   useEffect(() => {
-//     setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
-//   }, []);
+        <div id="navbarBasicExample" className={`navbar-menu ${isOpen ? 'is-active' : ''}`}>
+          <div className="navbar-start">
+            <a href={'/'} className={`navbar-item ${isActive('/')}`}>
+              Home
+            </a>
 
-  return (
-    <IonMenu side="start" contentId="main"  menuId="first">
-      <IonHeader>
-        <IonToolbar >
-        
-          <IonTitle>. Covid Help .</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent color="light">
-        <IonList>
-          {pages.map(p => (
-            <IonMenuToggle autoHide={false}>
-              <IonItem routerLink={p.url} routerDirection="none" detail={false} lines="full">
-                <IonIcon icon={p.icon} slot="start" />
-                <IonLabel>{p.title}</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
-          ))}
-        </IonList>
-      </IonContent>
-    </IonMenu>
-  );
+            <a href={'/contact'} className={`navbar-item ${isActive('/contact')}`}>
+              Contact Us
+            </a>
+
+          </div>
+
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a href={'/addOrUpdate'} className="button is-primary">
+                  <strong>Add Service</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+  )
 };
 
 export default Menu;
