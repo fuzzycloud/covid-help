@@ -5,3 +5,16 @@ export interface User {
     photoURL: string;
     emailVerified: boolean;
  }
+ export class TODO {
+    key: string;
+    state:string;
+    city:string;
+    service:string;
+    title:string;
+    description: string;
+    nameOne: string;
+    numberOne: string;
+    nameTwo: string;
+    numberTwo: string;
+  
+  }

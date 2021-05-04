@@ -7,42 +7,38 @@
     <ion-buttons slot="end">
       <ion-button routerLink="/login">Add Supplier</ion-button>
     </ion-buttons>
-    
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- 
-  
-  <ion-searchbar placeholder="Search here"  ></ion-searchbar>
- 
+
+
+  <ion-searchbar placeholder="Search here"></ion-searchbar>
+
+  <ion-item >
+    <ion-label>State</ion-label>
+    <ion-select placeholder="Select State" >
+      <ion-select-option *ngFor="let task of Tasks" [value] = "task.state">{{task.state}}</ion-select-option>
+      <!-- <ion-select-option value="m">Uttar Pradesh</ion-select-option> -->
+    </ion-select>
+  </ion-item>
   <ion-item>
-<ion-label>State</ion-label>
-<ion-select placeholder="Select State">
-<ion-select-option value="f">Gujarat</ion-select-option>
-<ion-select-option value="m">Uttar Pradesh</ion-select-option>
-</ion-select>
-</ion-item>
-<ion-item>
-<ion-label>City</ion-label>
-<ion-select placeholder="Select City">
-<ion-select-option value="f">Bhavnagar</ion-select-option>
-<ion-select-option value="m">Surat</ion-select-option>
-<ion-select-option value="k">Rajkot</ion-select-option>
-</ion-select>
-</ion-item>
-<ion-item>
-<ion-label>Choose your requirement</ion-label>
-<ion-select placeholder="Select">
-<ion-select-option value="f">Oxygen</ion-select-option>
-<ion-select-option value="m">Tiffin</ion-select-option>
-<ion-select-option value="n">Beds</ion-select-option>
-<ion-select-option value="o">Home  Isolation</ion-select-option>
-</ion-select>
-</ion-item>
-<ion-item lines="none">
-<ion-button routerLink="/user/list"  color="success" size="medium" fill="outline" style="margin-left: auto;margin-right: auto;">Apply</ion-button>
-</ion-item>
+    <ion-label>City</ion-label>
+    <ion-select placeholder="Select City">
+      <ion-select-option *ngFor="let task of Tasks" [value] = "task.city">{{task.city}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Choose your requirement</ion-label>
+    <ion-select placeholder="Select">
+      <ion-select-option *ngFor="let task of Tasks" [value] = "task.service">{{task.service}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button routerLink="/user/list" color="success" size="medium" fill="outline"
+      style="margin-left: auto;margin-right: auto;">Apply</ion-button>
+  </ion-item>
 
 
 </ion-content>

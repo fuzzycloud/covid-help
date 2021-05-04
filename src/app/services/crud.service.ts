@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-export class TODO {
-  $key: string;
-  title: string;
-  description: string;
-}
+import { TODO } from './user';
+
 @Injectable({
   providedIn: 'root'
 })

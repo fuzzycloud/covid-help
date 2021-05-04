@@ -20,8 +20,15 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
+      state:[''],
+      city:[''],
+      service:[''],
       title: [''],
-      description: ['']
+      description: [''],
+      nameOne:[''],
+      numberOne:[''],
+      nameTwo:[''],
+      numberTwo:[''],
     })
   }
   onSubmit() {
@@ -31,7 +38,7 @@ export class AdminPage implements OnInit {
       this.crudService.create(this.todoForm.value)
       .then(() => {
         this.todoForm.reset();
-        // console.log("data added");
+        console.log("data added");
         this.router.navigate(['/user/home']);
       }).catch((err) => {
         console.log(err)
