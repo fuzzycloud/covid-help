@@ -2,82 +2,103 @@
   <ion-toolbar>
     <ion-title>admin</ion-title>
     <ion-buttons slot="start">
-            
+
       <ion-back-button defaultHref="/"></ion-back-button>
-    
-        </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content
-   
-  >
-     <ion-item>
-      <ion-label>Enter State</ion-label>
-      <ion-select  placeholder="Select One" >
-        <ion-select-option value="f">Gujarat</ion-select-option>
-        <ion-select-option value="m">Uttar Pradesh</ion-select-option>
-        <ion-select-option value="m">Goa</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Enter City</ion-label>
-      <ion-select  placeholder="Select One" >
-        <ion-select-option value="f">Bhavnagar</ion-select-option>
-        <ion-select-option value="m">Rajkot</ion-select-option>
-        <ion-select-option value="h">Vadodara</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Enter Services</ion-label>
-      <ion-select  placeholder="Select One" >
-        <ion-select-option value="f">Oxygen</ion-select-option>
-        <ion-select-option value="m">Tiffin</ion-select-option>
-        <ion-select-option value="h">Beds</ion-select-option>
-        <ion-select-option value="h">Plasma</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Enter State</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f">Gujarat</ion-select-option>
+      <ion-select-option value="m">Uttar Pradesh</ion-select-option>
+      <ion-select-option value="m">Goa</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Enter City</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f">Bhavnagar</ion-select-option>
+      <ion-select-option value="m">Rajkot</ion-select-option>
+      <ion-select-option value="h">Vadodara</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Enter Services</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f">Oxygen</ion-select-option>
+      <ion-select-option value="m">Tiffin</ion-select-option>
+      <ion-select-option value="h">Beds</ion-select-option>
+      <ion-select-option value="h">Plasma</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!-- <ion-item>
     <ion-input placeholder="Enter Title"></ion-input>
-    </ion-item>
-    <ion-item>
+  </ion-item> -->
+  <!-- <ion-item>
     <ion-input placeholder="Enter Description"></ion-input>
-    </ion-item>
-    <ion-item>
+  </ion-item> -->
+  <ion-content>
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input formControlName="title" type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input formControlName="description" type="text" required>
+        </ion-input>
+      </ion-item>
+  
+      <ion-button class="ion-margin-top" type="submit" expand="block" color="success">Create</ion-button>
+    </form>
+  </ion-content>
+  <ion-item>
     <ion-row>
-        <ion-col>
+      <ion-col>
         <ion-input placeholder="Enter Name"></ion-input>
-            </ion-col>              <ion-col><ion-input type="number" placeholder="Enter Number"></ion-input></ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" placeholder="Enter Number"></ion-input>
+      </ion-col>
     </ion-row>
-    </ion-item>
-    <ion-item>
+  </ion-item>
+  <ion-item>
     <ion-row>
-        <ion-col>
+      <ion-col>
         <ion-input placeholder="Enter Name"></ion-input>
-            </ion-col>              <ion-col><ion-input type="number" placeholder="Enter Number"></ion-input></ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" placeholder="Enter Number"></ion-input>
+      </ion-col>
     </ion-row>
-    </ion-item>
-    <ion-item>
+  </ion-item>
+  <ion-item>
     <ion-row>
-        <ion-col>
+      <ion-col>
         <ion-input placeholder="Enter Name"></ion-input>
-            </ion-col>              <ion-col><ion-input type="number" placeholder="Enter Number"></ion-input></ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" placeholder="Enter Number"></ion-input>
+      </ion-col>
     </ion-row>
-    </ion-item>
-    <ion-item>
+  </ion-item>
+  <ion-item>
     <ion-row>
-        <ion-col>
+      <ion-col>
         <ion-input placeholder="Enter Name"></ion-input>
-            </ion-col>              <ion-col><ion-input type="number" placeholder="Enter Number"></ion-input></ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" placeholder="Enter Number"></ion-input>
+      </ion-col>
     </ion-row>
-    </ion-item>
-    <ion-item lines="none">
-<ion-button
-  style="margin-left: auto;margin-right: auto;"
-  fill="outline"
-  type="submit"
-  size="medium"
-  color="tertiary-tint"
-  >Submit</ion-button>
-</ion-item>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button style="margin-left: auto;margin-right: auto;" fill="outline" type="submit" size="medium"
+      color="tertiary-tint">Submit</ion-button>
+  </ion-item>
 
 </ion-content>
