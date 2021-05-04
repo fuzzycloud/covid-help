@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CrudService } from './../services/crud.service';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder,FormArray  } from "@angular/forms";
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage implements OnInit {
-
+  // orderForm: FormGroup;
+  items: FormArray;
   todoForm: FormGroup;
 
   constructor(
@@ -25,11 +27,23 @@ export class AdminPage implements OnInit {
       service:[''],
       title: [''],
       description: [''],
-      nameOne:[''],
-      numberOne:[''],
-      nameTwo:[''],
-      numberTwo:[''],
+      items: this.formBuilder.array([ this.createItem() ])
+      // nameOne:[''],
+      // numberOne:[''],
+      // nameTwo:[''],
+      // numberTwo:[''],
     })
+    
+  }
+  createItem(): FormGroup {
+    return this.formBuilder.group({
+      name: '',
+      number: '',
+    });
+  }
+  addItem(): void {
+    this.items = this.todoForm.get('items') as FormArray;
+    this.items.push(this.createItem());
   }
   onSubmit() {
     if (!this.todoForm.valid) {
