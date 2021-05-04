@@ -1,0 +1,7 @@
+{
+  "name": "covidhelp-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
