@@ -1,12 +1,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBb1ekqnunrGO74CztWp6av8xuOMF4dSdc",
-    authDomain: "covid-29072.firebaseapp.com",
-    projectId: "covid-29072",
-    storageBucket: "covid-29072.appspot.com",
-    messagingSenderId: "618097628840",
-    appId: "1:618097628840:web:1cbcf88ab0036d1ec3149d"
-
+    API_KEY:"AIzaSyBihpLeqs3WlnZ88zR7Rh2UIqhgfto6ITo",
+    AUTH_DOMAIN:"covid19helpindia-d2180.firebaseapp.com",
+    PROJECT_ID:"covid19helpindia-d2180",
+    STORAGE_BUCKET:"covid19helpindia-d2180.appspot.com",
+    MESSAGING_SENDER_ID:"674531189237",
+    APP_ID:"1:674531189237:web:a15666940dfbf77104c0bc",
+    MEASUREMENT_ID:"G-DQ8TFYDRPZ",
+    DATABASE_URL:"https:"//covid19helpindia-d2180-default-rtdb.europe-west1.firebasedatabase.app
   }
 };

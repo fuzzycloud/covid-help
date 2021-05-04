@@ -1,65 +1,48 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from "../services/user";
+
+import { Observable } from 'rxjs';
+import firebase from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from "@angular/router";
+import { cfaSignIn, cfaSignOut } from 'capacitor-firebase-auth';
+import { CapacitorService } from './capacitor.service';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-  constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,  
-    public ngZone: NgZone
-  ) {  this.afAuth.authState.subscribe(user => {
-    if (user) {
-      this.userData = user;
-      localStorage.setItem('user', JSON.stringify(this.userData));
-      JSON.parse(localStorage.getItem('user'));
-    } else {
-      localStorage.setItem('user', null);
-      JSON.parse(localStorage.getItem('user'));
-    }
-  })}
-  SignIn(email, password) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['user/home']);
-        });
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message)
-      })
+  constructor(   
+    private auth: AngularFireAuth,
+    private capacitorService: CapacitorService    
+  ) {  
   }
-  // GoogleAuth() {
-  //   return this.AuthLogin(new auth.GoogleAuthProvider());
-  // }
-  AuthLogin(provider) {
-    return this.afAuth.signInWithPopup(provider)
-    .then((result) => {
-       this.ngZone.run(() => {
-          this.router.navigate(['user/home']);
-        })
-      this.SetUserData(result.user);
-    }).catch((error) => {
-      window.alert(error)
-    })
+  
+  googleSignIn(): Observable<firebase.User> {
+    return cfaSignIn('google.com');
   }
-  SetUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    }
-    return userRef.set(userData, {
-      merge: true
-    })
+
+  logout(): Observable<void> {
+    return cfaSignOut();
   }
+
+  get isAuthenticated(): Observable<boolean> {
+    return this.auth.authState.pipe(map((x) => x !== null));
+  }
+
+  get currentUser(): Observable<firebase.User | null> {
+    return this.auth.authState;
+  }
+
+  get displayName(): Observable<string | null | undefined> {
+    return this.auth.authState.pipe(map((x) => x?.displayName));
+  }
+
+  get currentUserId(): Observable<string | undefined> {
+    return this.auth.authState.pipe(map((x) => x?.uid));
+  }
+
+  
 
 }
