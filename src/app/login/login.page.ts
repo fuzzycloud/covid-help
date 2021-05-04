@@ -16,10 +16,10 @@ export class LoginPage implements OnInit {
         console.log(
           user
             .getIdTokenResult()
-            .then((res) => console.log("success" ,res.claims['../user/home']))            
+            .then((res) => console.log("success" ,res.claims['admin']))            
             
         );
-        this.router.navigate(['user/home']);
+        this.router.navigate(['admin']);
       },
       (error) => {
         console.log(error);
