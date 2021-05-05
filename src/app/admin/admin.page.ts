@@ -30,10 +30,7 @@ export class AdminPage implements OnInit {
       title: [''],
       description: [''],
       items: this.formBuilder.array([ this.createItem() ])
-      // nameOne:[''],
-      // numberOne:[''],
-      // nameTwo:[''],
-      // numberTwo:[''],
+     
     })
     
     

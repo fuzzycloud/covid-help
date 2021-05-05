@@ -12,20 +12,20 @@ export class HomePage implements OnInit {
   constructor(private crudService: CrudService) { }
 
   ngOnInit() {
-    this.crudService.getTasks().subscribe((res) => {
-      this.Tasks = res.map((t) => {
-        return {
-          id: t.payload.doc.id,
-          ...t.payload.doc.data() as TODO
-        };
-      })
-    });
+  //   this.crudService.getTasks().subscribe((res) => {
+  //     this.Tasks = res.map((t) => {
+  //       return {
+  //         id: t.payload.doc.id,
+  //         ...t.payload.doc.data() as TODO
+  //       };
+  //     })
+  //   });
   }
-  todoList() {
-    this.crudService.getTasks()
-    .subscribe((data) => {
-      console.log(data)
-    })
-  }
+  // todoList() {
+  //   this.crudService.getTasks()
+  //   .subscribe((data) => {
+  //     console.log(data)
+  //   })
+  // }
 
 }

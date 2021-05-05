@@ -12,9 +12,8 @@ export interface User {
     service:string;
     title:string;
     description: string;
-    nameOne: string;
-    numberOne: string;
-    nameTwo: string;
-    numberTwo: string;
+    name: string;
+    number: Number;
+  
   
   }
