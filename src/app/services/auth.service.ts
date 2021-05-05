@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { cfaSignIn, cfaSignOut } from 'capacitor-firebase-auth';
 import { CapacitorService } from './capacitor.service';
-import { fromPromise } from 'rxjs/internal-compatibility';
+
 import { map } from 'rxjs/operators';
 
 @Injectable({

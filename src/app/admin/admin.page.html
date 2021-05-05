@@ -42,14 +42,38 @@
   </ion-item> -->
 <ion-content>
   <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="floating">State</ion-label>
       <ion-input formControlName="state" type="text" required></ion-input>
-    </ion-item>
-    <ion-item>
+    </ion-item> -->
+    <!-- <ion-item>
       <ion-label position="floating">City</ion-label>
       <ion-input formControlName="city" type="text" required></ion-input>
+    </ion-item> -->
+    <ion-item>
+     
+      <ion-select *ngIf="getCountries()" [(ngModel)]="selectedCountry" (change)="onSelectCountry($event.target.value)"
+        id="country">
+        <ion-select-option value="0">Select Country</ion-select-option>
+        <ion-select-option *ngFor="let country of getCountries()" value={{country.id}}>{{country.name}}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
+    <ion-item>
+      
+      <ion-select *ngIf="states" [(ngModel)]="selectedState" (change)="onSelectState($event.target.value)" id="state">
+        <ion-select-option value="0">Select State</ion-select-option>
+        <ion-select-option *ngFor="let state of states" value={{state.id}}>{{state.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+     
+      <ion-select  id="city">
+      <ion-select-option *ngIf="!selectedState" value="0">Select City</ion-select-option>
+      <ion-select-option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</ion-select-option>
+      </ion-select>
+      </ion-item>
+
     <ion-item>
       <ion-label position="floating">Service</ion-label>
       <ion-input formControlName="service" type="text" required></ion-input>
@@ -72,7 +96,8 @@
               <ion-input formControlName="name" placeholder="Enter Name" required></ion-input>
             </ion-col>
             <ion-col>
-              <ion-input formControlName="number" type="number" placeholder="Enter Number" required maxlength=10></ion-input>
+              <ion-input formControlName="number" type="number" placeholder="Enter Number" required maxlength=10>
+              </ion-input>
               <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
                 Mobile number is required.
               </span>
@@ -82,7 +107,8 @@
             </ion-col>
           </div>
         </div>
-        <ion-button class="ion-margin-top" type="submit" expand="block" (click)="addItem()" fill="outline">Add more number</ion-button>
+        <ion-button class="ion-margin-top" type="submit" expand="block" (click)="addItem()" fill="outline">Add more
+          number</ion-button>
       </ion-row>
     </ion-item>
     <!-- <ion-item>
