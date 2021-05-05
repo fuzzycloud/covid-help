@@ -5,8 +5,8 @@ export interface User {
     photoURL: string;
     emailVerified: boolean;
  }
- export class TODO {
-    key: string;
+ export interface TODO {
+    id?: string;
     state:string;
     city:string;
     service:string;

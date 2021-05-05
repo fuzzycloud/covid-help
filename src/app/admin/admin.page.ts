@@ -14,6 +14,7 @@ export class AdminPage implements OnInit {
   items: FormArray;
   todoForm: FormGroup;
   isSubmitted = false;
+  data: any;
   constructor(
     private crudService: CrudService,
     public formBuilder: FormBuilder,    
@@ -22,6 +23,7 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
+      id:[''],
       state:['',[Validators.required, Validators.minLength(2)]],
       city:[''],
       service:[''],
@@ -33,6 +35,7 @@ export class AdminPage implements OnInit {
       // nameTwo:[''],
       // numberTwo:[''],
     })
+    
     
   }
   createItem(): FormGroup {
@@ -50,14 +53,15 @@ export class AdminPage implements OnInit {
   }
   onSubmit() {
     this.isSubmitted = true;
+    this.data=this.todoForm.value;
     if (!this.todoForm.valid) {
       return false;
     }
      else {
-      this.crudService.create(this.todoForm.value)
+      this.crudService.create(this.data)
       .then(() => {
         this.todoForm.reset();
-        console.log("data added");
+        console.log("data added",this.data);
         this.router.navigate(['/user/home']);
       }).catch((err) => {
         console.log(err)
@@ -66,3 +70,5 @@ export class AdminPage implements OnInit {
   }
 
 }
+
+
