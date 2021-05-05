@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CrudService } from './../services/crud.service';
-import { FormGroup, FormBuilder,FormArray  } from "@angular/forms";
+import { FormGroup, FormBuilder,FormArray ,Validators } from "@angular/forms";
 
 import { Router } from '@angular/router';
 @Component({
@@ -13,7 +13,7 @@ export class AdminPage implements OnInit {
   // orderForm: FormGroup;
   items: FormArray;
   todoForm: FormGroup;
-
+  isSubmitted = false;
   constructor(
     private crudService: CrudService,
     public formBuilder: FormBuilder,    
@@ -22,7 +22,7 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
-      state:[''],
+      state:['',[Validators.required, Validators.minLength(2)]],
       city:[''],
       service:[''],
       title: [''],
@@ -37,18 +37,23 @@ export class AdminPage implements OnInit {
   }
   createItem(): FormGroup {
     return this.formBuilder.group({
-      name: '',
-      number: '',
+      name: [''],
+      number: ['',[Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     });
   }
   addItem(): void {
     this.items = this.todoForm.get('items') as FormArray;
     this.items.push(this.createItem());
   }
+  get errorControl() {
+    return this.todoForm.controls;
+  }
   onSubmit() {
+    this.isSubmitted = true;
     if (!this.todoForm.valid) {
       return false;
-    } else {
+    }
+     else {
       this.crudService.create(this.todoForm.value)
       .then(() => {
         this.todoForm.reset();
