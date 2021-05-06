@@ -4,36 +4,43 @@ import { CrudService } from './../services/crud.service';
 import { FormGroup, FormBuilder,FormArray ,Validators } from "@angular/forms";
 
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
   styleUrls: ['./admin.page.scss'],
 })
 export class AdminPage implements OnInit {
-  // orderForm: FormGroup;
+  
+  public userForm: FormGroup;
   items: FormArray;
   todoForm: FormGroup;
   isSubmitted = false;
+  data: any;
   constructor(
     private crudService: CrudService,
+    private authServices: AuthService,
     public formBuilder: FormBuilder,    
     private router: Router
-  ) { }
-
-  ngOnInit() {
-    this.todoForm = this.formBuilder.group({
+  ) { 
+    this.userForm = this.formBuilder.group({
       state:['',[Validators.required, Validators.minLength(2)]],
       city:[''],
       service:[''],
       title: [''],
       description: [''],
       items: this.formBuilder.array([ this.createItem() ])
-      // nameOne:[''],
-      // numberOne:[''],
-      // nameTwo:[''],
-      // numberTwo:[''],
-    })
+    })   
+  }
+  onSubmit() {
+    this.crudService.createUser(this.userForm.value);
+    console.log(this.userForm.value);
+    this.router.navigate(['user/home']); 
+   };
+  ngOnInit() {
     
+   
   }
   createItem(): FormGroup {
     return this.formBuilder.group({
@@ -42,27 +49,8 @@ export class AdminPage implements OnInit {
     });
   }
   addItem(): void {
-    this.items = this.todoForm.get('items') as FormArray;
+    this.items = this.userForm.get('items') as FormArray;
     this.items.push(this.createItem());
   }
-  get errorControl() {
-    return this.todoForm.controls;
-  }
-  onSubmit() {
-    this.isSubmitted = true;
-    if (!this.todoForm.valid) {
-      return false;
-    }
-     else {
-      this.crudService.create(this.todoForm.value)
-      .then(() => {
-        this.todoForm.reset();
-        console.log("data added");
-        this.router.navigate(['/user/home']);
-      }).catch((err) => {
-        console.log(err)
-      });
-    }
-  }
-
+ 
 }

@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-import { TODO } from './user';
+import { User } from '../user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
-  constructor(  private ngFirestore: AngularFirestore,
+  constructor(  private fireStore: AngularFirestore,
     private router: Router) { }
-    create(todo: TODO) {
-      return this.ngFirestore.collection('tasks').add(todo);
+
+    getUserDoc(id) {
+      return this.fireStore
+      .collection('service')
+      .doc(id)
+      .valueChanges()
     }
-    
-    getTasks() {
-      return this.ngFirestore.collection('tasks').snapshotChanges();
+
+    getUserList() { 
+      return this.fireStore
+      .collection("service")
+      .snapshotChanges();
     }
-    
-    getTask(id) {
-      return this.ngFirestore.collection('tasks').doc(id).valueChanges();
+
+    createUser(user: User) {
+      return new Promise<any>((resolve, reject) =>{
+        this.fireStore
+          .collection("service")
+          .add(user)
+          .then(response => { console.log(response) }, error => reject(error));
+      });
     }
 }

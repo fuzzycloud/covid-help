@@ -41,7 +41,7 @@
     <ion-input placeholder="Enter Description"></ion-input>
   </ion-item> -->
 <ion-content>
-  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">State</ion-label>
       <ion-input formControlName="state" type="text" required></ion-input>
@@ -66,13 +66,15 @@
     </ion-item>
     <ion-item>
       <ion-row>
-        <div formArrayName="items" *ngFor="let item of todoForm.get('items')['controls']; let i = index;">
+        <div  formArrayName="items"
+        *ngFor="let item of userForm.get('items')['controls']; let i = index;" >
           <div [formGroupName]="i">
             <ion-col>
               <ion-input formControlName="name" placeholder="Enter Name" required></ion-input>
             </ion-col>
             <ion-col>
-              <ion-input formControlName="number" type="number" placeholder="Enter Number" required maxlength=10></ion-input>
+              <ion-input formControlName="number" type="number" placeholder="Enter Number" required maxlength=10>
+              </ion-input>
               <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
                 Mobile number is required.
               </span>
@@ -82,7 +84,8 @@
             </ion-col>
           </div>
         </div>
-        <ion-button class="ion-margin-top" type="submit" expand="block" (click)="addItem()" fill="outline">Add more number</ion-button>
+        <ion-button class="ion-margin-top" type="submit" expand="block" (click)="addItem()" fill="outline">Add more
+          number</ion-button>
       </ion-row>
     </ion-item>
     <!-- <ion-item>
@@ -95,9 +98,17 @@
           </ion-col>
         </ion-row>
       </ion-item> -->
-
+    <ion-item>
+     <div *ngIf="authServices.userData as user"> 
+        <div>        
+          <p>User ID: <strong>{{user.uid}}</strong></p>
+          <p>Email: <strong>{{user.email}}</strong></p>          
+        </div>
+      </div>
+    </ion-item>
     <ion-button class="ion-margin-top" type="submit" expand="block" color="success" fill="outline">Submit</ion-button>
   </form>
+
 </ion-content>
 
 

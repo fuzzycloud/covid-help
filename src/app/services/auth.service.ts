@@ -1,48 +1,65 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import firebase from 'firebase/app';
+
+// import firebase from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
-import { cfaSignIn, cfaSignOut } from 'capacitor-firebase-auth';
-import { CapacitorService } from './capacitor.service';
-import { fromPromise } from 'rxjs/internal-compatibility';
-import { map } from 'rxjs/operators';
+import firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-  constructor(   
-    private auth: AngularFireAuth,
-    private capacitorService: CapacitorService    
-  ) {  
-  }
   
-  googleSignIn(): Observable<firebase.User> {
-    return cfaSignIn('google.com');
+  constructor(   
+    public afs: AngularFirestore,   
+    public afAuth: AngularFireAuth,
+    public router: Router,  
+    public ngZone: NgZone 
+  ) {  
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user'));
+      } else {
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
+    })
   }
-
-  logout(): Observable<void> {
-    return cfaSignOut();
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null && user.emailVerified !== false) ? true : false;
   }
-
-  get isAuthenticated(): Observable<boolean> {
-    return this.auth.authState.pipe(map((x) => x !== null));
+  GoogleAuth() {
+    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
-
-  get currentUser(): Observable<firebase.User | null> {
-    return this.auth.authState;
+  AuthLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+    .then((result) => {
+       this.ngZone.run(() => {
+          this.router.navigate(['admin']);
+        })
+      this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }  
+  SetUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userData: User = {
+      uid: user.id,
+      email: user.email
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
   }
-
-  get displayName(): Observable<string | null | undefined> {
-    return this.auth.authState.pipe(map((x) => x?.displayName));
-  }
-
-  get currentUserId(): Observable<string | undefined> {
-    return this.auth.authState.pipe(map((x) => x?.uid));
-  }
-
+ 
   
 
 }
