@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/services/crud.service';
 import { User } from 'src/app/user.model';
 
@@ -10,28 +11,30 @@ import { User } from 'src/app/user.model';
 })
 export class HomePage implements OnInit {
   Users: User[];
-  constructor(private crudService: CrudService) { }
-  selectedState: string = '';
-  selectedCity: string = '';
-  selectedServices: string = '';
-  //event handler for the select element's change event
-  selectChangeState (event: any) {
-    //update the ui    
-    this.selectedState = event.target.value;
-   
+  data: any;
+  form: FormGroup;
+  constructor(private crudService: CrudService,private fb:FormBuilder) { this.createForm();} 
+  
+  stateList: any = ['Gujarat','Maharashtra']
+  cityList:any=['Surat','Rajkot']
+  serviceList:any=['Tiffin','Oxygen']
+  createForm() {
+    this.form = this.fb.group({
+      state: new FormControl('', Validators.required),
+    city:new FormControl('',Validators.required),
+    service:new FormControl('',Validators.required)
   }
-  selectChangeCity (event: any) {
-    //update the ui    
-    this.selectedCity = event.target.value;
-   
+    )
+}
+
+  submit(){
+    this.data=this.form.value;
+    console.log(this.data);
+
   }
-  selectChangeService (event: any) {
-    //update the ui    
-    this.selectedServices = event.target.value;
-   
-  }
+  
   ngOnInit() {
-   
+
     this.crudService.getUserList().subscribe(res => {
       this.Users = res.map( e => {
         return {
@@ -49,5 +52,8 @@ export class HomePage implements OnInit {
     console.log(this.Users);  
   }
  
-
+  // submit() {
+  //   console.log("Form Submitted")
+  //   console.log(this.contactForm.value)
+  // }
 }

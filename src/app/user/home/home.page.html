@@ -15,34 +15,32 @@
 
 
   <ion-searchbar placeholder="Search here"></ion-searchbar>
-
+  <form [formGroup]="form" >
   <ion-item >
     <ion-label>State</ion-label>
-    <ion-select placeholder="Select State" (ionChange)="selectChangeState($event)">
-      <ion-select-option value="Gujarat">Gujarat</ion-select-option>
-      <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+    <ion-select placeholder="Select State" formControlName="state">
+      <ion-select-option  *ngFor="let state of stateList" [value]="state">{{state}}</ion-select-option>
+    
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>City</ion-label>
-    <ion-select placeholder="Select City" (ionChange)="selectChangeCity($event)">
-      <ion-select-option value="Surat">Surat</ion-select-option>
-      <ion-select-option value="Rajkot">Rajkot</ion-select-option>
+    <ion-select placeholder="Select City" formControlName="city">
+      <ion-select-option *ngFor="let city of cityList">{{city}}</ion-select-option>
+     
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Choose your requirement</ion-label>
-    <ion-select placeholder="Select" (ionChange)="selectChangeService($event)">
-      <ion-select-option value="Tiffin">Tiffin</ion-select-option>
-      <ion-select-option value="Oxygen">Oxygen</ion-select-option>
+    <ion-select placeholder="Select" formControlName="service">
+      <ion-select-option *ngFor="let service of serviceList">{{service}}</ion-select-option>
+     
     </ion-select>
   </ion-item>
   <ion-item lines="none">
-    <ion-button routerLink="/user/list" color="success" size="medium" fill="outline"
-      style="margin-left: auto;margin-right: auto;"  (ionChange)="selectChange($event)">Apply</ion-button>
+    <ion-button  color="success" size="medium" fill="outline"
+      style="margin-left: auto;margin-right: auto;" (click)="submit()">Apply</ion-button>
   </ion-item>
-
-  <ion-label>{{selectedState}} {{selectedCity}} {{selectedServices}}</ion-label>
-
-  
+</form>
+  {{data|json}}
 </ion-content>
