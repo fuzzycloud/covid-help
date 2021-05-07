@@ -11,7 +11,25 @@ import { User } from 'src/app/user.model';
 export class HomePage implements OnInit {
   Users: User[];
   constructor(private crudService: CrudService) { }
-
+  selectedState: string = '';
+  selectedCity: string = '';
+  selectedServices: string = '';
+  //event handler for the select element's change event
+  selectChangeState (event: any) {
+    //update the ui    
+    this.selectedState = event.target.value;
+   
+  }
+  selectChangeCity (event: any) {
+    //update the ui    
+    this.selectedCity = event.target.value;
+   
+  }
+  selectChangeService (event: any) {
+    //update the ui    
+    this.selectedServices = event.target.value;
+   
+  }
   ngOnInit() {
    
     this.crudService.getUserList().subscribe(res => {

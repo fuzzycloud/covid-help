@@ -18,27 +18,31 @@
 
   <ion-item >
     <ion-label>State</ion-label>
-    <ion-select placeholder="Select State" >
-      <ion-select-option *ngFor="let task of Tasks" [value] = "task.state">{{task.state}}</ion-select-option>
-      <!-- <ion-select-option value="m">Uttar Pradesh</ion-select-option> -->
+    <ion-select placeholder="Select State" (ionChange)="selectChangeState($event)">
+      <ion-select-option value="Gujarat">Gujarat</ion-select-option>
+      <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>City</ion-label>
-    <ion-select placeholder="Select City">
-      <ion-select-option *ngFor="let task of Tasks" [value] = "task.city">{{task.city}}</ion-select-option>
+    <ion-select placeholder="Select City" (ionChange)="selectChangeCity($event)">
+      <ion-select-option value="Surat">Surat</ion-select-option>
+      <ion-select-option value="Rajkot">Rajkot</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Choose your requirement</ion-label>
-    <ion-select placeholder="Select">
-      <ion-select-option *ngFor="let task of Tasks" [value] = "task.service">{{task.service}}</ion-select-option>
+    <ion-select placeholder="Select" (ionChange)="selectChangeService($event)">
+      <ion-select-option value="Tiffin">Tiffin</ion-select-option>
+      <ion-select-option value="Oxygen">Oxygen</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item lines="none">
     <ion-button routerLink="/user/list" color="success" size="medium" fill="outline"
-      style="margin-left: auto;margin-right: auto;">Apply</ion-button>
+      style="margin-left: auto;margin-right: auto;"  (ionChange)="selectChange($event)">Apply</ion-button>
   </ion-item>
 
+  <ion-label>{{selectedState}} {{selectedCity}} {{selectedServices}}</ion-label>
 
+  
 </ion-content>
