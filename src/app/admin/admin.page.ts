@@ -28,8 +28,8 @@ export class AdminPage implements OnInit {
       state:['',[Validators.required]],
       city:['',[Validators.required]],
       service:['',[Validators.required]],
-      title: ['',[Validators.required]],
-      description: ['',[Validators.required]],
+      title: [''],
+      description: [''],
       items: this.formBuilder.array([ this.createItem() ])
     })   
   }
