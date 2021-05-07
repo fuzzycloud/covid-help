@@ -47,7 +47,7 @@ style="justify-content: center;margin-top: 5%;"
 <ion-row  >
   <ion-col><ion-button expand="block" fill="outline" color="danger" (click)="authService.GoogleAuth()">Google +</ion-button></ion-col>
 
-  <ion-col><ion-button expand="block" fill="outline" color="tertiary"  >Facebook</ion-button></ion-col>
+  <ion-col><ion-button expand="block" fill="outline" color="tertiary" [routerLink]="['/admin']" >Facebook</ion-button></ion-col>
 </ion-row>
 </form></ion-card>
 </ion-content> 

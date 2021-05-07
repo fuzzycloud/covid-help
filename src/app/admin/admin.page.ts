@@ -25,32 +25,36 @@ export class AdminPage implements OnInit {
     private router: Router
   ) { 
     this.userForm = this.formBuilder.group({
-      state:['',[Validators.required, Validators.minLength(2)]],
-      city:[''],
-      service:[''],
-      title: [''],
-      description: [''],
+      state:['',[Validators.required]],
+      city:['',[Validators.required]],
+      service:['',[Validators.required]],
+      title: ['',[Validators.required]],
+      description: ['',[Validators.required]],
       items: this.formBuilder.array([ this.createItem() ])
     })   
   }
-  onSubmit() {
-    this.crudService.createUser(this.userForm.value);
-    console.log(this.userForm.value);
-    this.router.navigate(['user/home']); 
-   };
-  ngOnInit() {
-    
-   
-  }
   createItem(): FormGroup {
     return this.formBuilder.group({
-      name: [''],
+      name: ['',[Validators.required]],
       number: ['',[Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     });
   }
   addItem(): void {
     this.items = this.userForm.get('items') as FormArray;
     this.items.push(this.createItem());
+  }
+  removeItems(i:number) {
+    this.items.removeAt(i);
+  }
+  onSubmit() {
+    this.crudService.createUser(this.userForm.value);
+    console.log(this.userForm.value);
+    if(this.userForm.valid){
+      this.router.navigate(['user/home']); 
+    }
+    
+   };
+  ngOnInit() {   
   }
  
 }
