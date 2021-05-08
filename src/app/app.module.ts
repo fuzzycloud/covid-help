@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { AuthService } from './services/auth.service';
+
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireDatabaseModule,
     FormsModule,
     AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -19,21 +19,21 @@
   <ion-item >
     <ion-label>State</ion-label>
     <ion-select placeholder="Select State" formControlName="state">
-      <ion-select-option  *ngFor="let state of stateList" [value]="state">{{state}}</ion-select-option>
+      <ion-select-option  *ngFor="let state of stateList" [value]="state">{{state.title}}</ion-select-option>
     
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>City</ion-label>
     <ion-select placeholder="Select City" formControlName="city">
-      <ion-select-option *ngFor="let city of cityList">{{city}}</ion-select-option>
+      <ion-select-option *ngFor="let city of cityList">{{city.title}}</ion-select-option>
      
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Choose your requirement</ion-label>
     <ion-select placeholder="Select" formControlName="service">
-      <ion-select-option *ngFor="let service of serviceList">{{service}}</ion-select-option>
+      <ion-select-option *ngFor="let service of serviceList">{{service.title}}</ion-select-option>
      
     </ion-select>
   </ion-item>
@@ -42,5 +42,29 @@
       style="margin-left: auto;margin-right: auto;" (click)="submit()">Apply</ion-button>
   </ion-item>
 </form>
+<ion-item></ion-item>
   {{data|json}}
+
+
+  <!-- Crud Operation -->
+  <!-- <ion-item>
+  <div >
+    <div *ngIf="show">
+      <ion-input type="text" name="" class="edit-item" value="{{value}}" #item></ion-input>
+      <ion-button  (click)="update(item.value)">Update</ion-button>
+    </div>
+  
+    <ion-input type="text" name="" class="item" #item></ion-input>
+    <ion-button  (click)="create(item.value)">Add</ion-button>
+  
+    <ul>
+      <li *ngFor="let item of mockData">
+        <span [ngClass]="{'done': item.done}">{{item.title}}</span>
+        <ion-button (click)="remove(item.id)">Delete</ion-button>
+        <ion-button (click)="edit(item.id, item.title)">Edit</ion-button>
+        <ion-button (click)="setTaskComplete(item.id)">Complete</ion-button>
+      </li>
+    </ul>
+  </div>
+  </ion-item> -->
 </ion-content>
