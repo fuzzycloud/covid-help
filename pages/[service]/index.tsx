@@ -3,7 +3,6 @@ import { GetStaticPaths, InferGetStaticPropsType } from 'next';
 import { slimServiceRoutes } from '../../data/routes';
 import useSWR from 'swr';
 import { SlimAddress } from '../../types/info';
-import CitySelection from '../../components/citySelection';
 
 const Home = ({ service }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { data, error } = useSWR<SlimAddress[]>(`/api/services/${service}`);
@@ -13,7 +12,8 @@ const Home = ({ service }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data) {
     return null;
   }
-  return <CitySelection baseUrl={`${service}`} addresses={data} />;
+  // return <CitySelection baseUrl={`${service}`} addresses={data} />;
+  return null;
 };
 export const getStaticProps = async ({ params }) => {
   const service: string = params.service;

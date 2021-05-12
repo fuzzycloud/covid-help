@@ -1,8 +1,7 @@
 import React from 'react';
-import { BulmaField } from '../components/bulma/form/input';
-import { BulmaAreaField } from '../components/bulma/form/area';
-import { BulmaSubmit } from '../components/bulma/form/submit';
+import {Button, Form} from 'react-bulma-components';
 const Contact = () => {
+  const { Field, Input, Label, Textarea } = Form;
   return (
     <form
       name="contact"
@@ -13,10 +12,25 @@ const Contact = () => {
       netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
-      <BulmaField name={'name'} label={'Name'} placeholder={'Please provide your Name'} type={'text'}/>
-      <BulmaField name={'email'} label={'Email'} placeholder={'Please provide your Email'} type={'email'} />
-      <BulmaAreaField name={'message'} label={'Message'} placeholder={'Please provide details message'} />
-      <BulmaSubmit/>
+      <Field>
+       <Label>
+         Name
+       </Label>
+       <Input name={'name'} placeholder={'Please provide your Name'} type={'text'} />
+      </Field>
+      <Field>
+        <Label>
+          Email
+        </Label>
+        <Input name={'email'} placeholder={'Please provide your Email'} type={'email'} />
+      </Field>
+      <Field>
+        <Label>
+          Message
+        </Label>
+        <Textarea name={'message'} placeholder={'Please provide detailed message'} />
+      </Field>
+      <Button type={'submit'} color={'success'} > Submit </Button>
     </form>
   );
 };

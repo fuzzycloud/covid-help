@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from 'react';
-import { ServiceData } from './find_services';
+import { ServiceData } from './service_data';
 import useSWR from 'swr';
 import { InferGetStaticPropsType } from 'next';
 import { getFirebaseApp } from './config';

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Filter } from '../components/temp/filter';
+import {Columns} from "react-bulma-components";
+import {ServiceFilter} from "../components/filters/service_filter";
+import {StateFilter} from "../components/filters/state_filter";
+import {DistrictFilter} from "../components/filters/district_filter";
 
 type ServiceListProps = {
   service: string;
@@ -17,24 +20,25 @@ const ServiceList: React.FC<ServiceListProps> = (props) => {
   );
 };
 
-export default function Index() {
+const Index = () => {
   const [selectedService, setSelectedService] = useState('');
   const [selectedState, setSelectedState] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('');
   return (
     <div>
-      <div className="columns">
-        <div className="column">
-          <Filter
-            setSelectedDistrict={setSelectedDistrict}
-            selectedState={selectedState}
-            setSelectedState={setSelectedState}
-            setSelectedService={setSelectedService}
-          />
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
+      <Columns>
+        <Columns.Column>
+          <ServiceFilter selectedService={selectedService} setSelectedService={setSelectedService} />
+        </Columns.Column>
+          <Columns.Column>
+              <StateFilter selectedState={selectedState} setSelectedState={setSelectedState} resetDistrict={() => setSelectedDistrict('') } />
+          </Columns.Column>
+          <Columns.Column>
+              {selectedService && selectedState && <DistrictFilter district={selectedDistrict} state={selectedState} setSelectedDistrict={setSelectedDistrict} />}
+          </Columns.Column>
+      </Columns>
+      <Columns>
+        <Columns.Column>
           {selectedDistrict && selectedState && selectedService && (
             <ServiceList
               service={selectedService}
@@ -42,8 +46,11 @@ export default function Index() {
               district={selectedDistrict}
             />
           )}
-        </div>
-      </div>
+        </Columns.Column>
+      </Columns>
     </div>
   );
 }
+
+
+export default Index;

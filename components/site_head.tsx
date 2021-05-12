@@ -12,7 +12,7 @@ type HeadProps = {
   ogImage?: string;
 };
 
-const SiteHead = (props: HeadProps) => (
+const Site_head = (props: HeadProps) => (
   <NextHead>
     <meta charSet="UTF-8" />
     <title>{props.title || ''}</title>
@@ -85,4 +85,4 @@ const SiteHead = (props: HeadProps) => (
   </NextHead>
 );
 
-export default SiteHead;
+export default Site_head;

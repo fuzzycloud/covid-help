@@ -1,10 +1,10 @@
-import SiteHead from '../components/siteHead';
+import Site_head from '../components/site_head';
 import '../styles/app.css';
 import Menu from '../components/menu';
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <SiteHead title={'Covid Help'} />
+      <Site_head title={'Covid Help'} />
       <Menu />
       <div className="container is-fluid main">
 
