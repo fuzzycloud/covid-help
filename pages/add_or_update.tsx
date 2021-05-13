@@ -1,50 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Notification, Tabs } from 'react-bulma-components';
-import { useBulmaForm } from '../components/useBulmaForm';
-
-type Address = {
-  address_line?: string;
-  address_line2?: string;
-  district: string;
-  state: string;
-  country: string;
-};
-
-type FormInput = {
-  name: string;
-  details?: string;
-  address: Address;
-};
+import { useBulmaForm, UseBulmaFormReturn } from '../components/useBulmaForm';
+import { FormTabs } from '../components/add_services/form_tabs';
+import { DetailTab } from '../components/add_services/detail_tab';
+import { FormInput } from '../components/add_services/types';
+import { AddressTab } from '../components/add_services/address_tab';
+import { ContactsTab } from '../components/add_services/contacts_tab';
 
 const Add_or_update = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useBulmaForm<FormInput>({
+  const bulmaForm: Omit<
+    UseBulmaFormReturn<FormInput>,
+    'ref'
+  > = useBulmaForm<FormInput>({
     mode: 'all',
   });
 
-  const { Field, Input, Textarea, Label } = Form;
+  const {
+    handleSubmit,
+    formState: { isValid },
+  } = bulmaForm;
+
+  const [selectedTab, setSelectedTab] = useState<FormTabs>('Detail');
   const onSubmit = (data) => console.log(data);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Tabs type={'toggle-rounded'} fullwidth align={'center'}>
-        <Tabs.Tab active>Service Information</Tabs.Tab>
-        <Tabs.Tab>Address</Tabs.Tab>
-        <Tabs.Tab>Contacts</Tabs.Tab>
-      </Tabs>
-      <Field>
-        <Label>Name</Label>
-        <Input {...register('name', { required: 'Name is required' })} />
-        {errors.name && (
-          <Notification color={'danger'}>{errors.name.message}</Notification>
-        )}
-      </Field>
-      <Field>
-        <Label>Detail</Label>
-        <Textarea {...register('details')} />
-      </Field>
+      <FormTabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      <DetailTab selectedTab={selectedTab} bulmaForm={bulmaForm} />
+      <AddressTab selectedTab={selectedTab} bulmaForm={bulmaForm} />
+      <ContactsTab selectedTab={selectedTab} bulmaForm={bulmaForm} />
       <Button disabled={!isValid} color={'primary'} type={'submit'}>
         Submit
       </Button>
